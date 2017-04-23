@@ -1,0 +1,35 @@
+
+<h1 class="head-title-form"> Profiles</h1>
+<div class="container">
+  <% if !notice.nil? %>
+  <p id="notice" class="notice-good"><%= notice %></p>
+  <% end %>
+  <div class="table-responsive">
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.id %></td>
+        <td><%= profile.name %></td>
+        <td>
+        <!--  <%= link_to 'Show', profile , class: "btn btn-default btn-sm" %> -->
+          <%= link_to 'Edit', edit_profile_path(profile) ,class: "btn btn-default btn-sm" %>
+          <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Profile', new_profile_path, class: "font_size_no_p" %>
+</div>

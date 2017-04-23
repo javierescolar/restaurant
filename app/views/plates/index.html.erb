@@ -1,0 +1,30 @@
+
+
+<h1 class="head-title-form"> Plates</h1>
+  <div class="container">
+  <% @plates.each do |plate| %>
+    <div class="col-md-3 col-xs-12 float_left_plates">
+      <div class="row">
+        <div class="col">
+          <h3 class="title_plate_menu text-center">Nº<%= plate.id %>: <%= plate.name %></h3>
+          <%= image_tag(plate.photo, :alt => "logo",  class:"images_plates_menu img-fluid") %>
+        </div>
+      </div>
+      <div class="row">
+
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to 'Show', plate ,class: "btn btn-default btn-sm col-12" %>
+        </div>
+        <div class="col">
+            <%= link_to 'Edit', edit_plate_path(plate),class: "btn btn-default btn-sm col-12" %>
+        </div>
+        <div class="col">
+            <%= link_to 'Destroy', plate, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm col-12" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

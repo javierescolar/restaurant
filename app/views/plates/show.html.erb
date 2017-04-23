@@ -1,0 +1,42 @@
+<h1 class="head-title-form"> Plate</h1>
+<div class="container">
+
+<div class="row">
+  <div class="col">
+      <p><b>Photo:</b></p>
+    <%= image_tag(@plate.photo, :alt => "logo",  class:"img-fluid") %>
+  </div>
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <p><b>Category:</b></p>
+        <i><%= @plate.category.name %></i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9">
+        <p><b>Name:</b></p>
+        <i><%= @plate.name %></i>
+      </div>
+      <div class="col-3">
+      <p>  <b>Price:</b></p>
+        <i><%= @plate.price %> €</i>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p><b>Description:</b></p>
+        <i><%= @plate.description %></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<%= link_to '<<', plates_path,class: "btn btn-default btn-sm" %>
+<%= link_to 'Edit', edit_plate_path(@plate),class: "btn btn-default btn-sm" %>
+</div>

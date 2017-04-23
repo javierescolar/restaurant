@@ -1,0 +1,9 @@
+I"‡(function() {
+  $(function() {
+    return $('nav li a').click()(function() {
+      return alert("hola");
+    });
+  });
+
+}).call(this);
+:ET

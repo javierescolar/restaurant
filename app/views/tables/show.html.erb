@@ -1,0 +1,20 @@
+
+<p>
+  <strong>Number:</strong>
+  <%= @table.number %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @table.capacity %>
+</p>
+
+<p>
+  <strong>Free:</strong>
+  <%= @table.free %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_table_path(@table) %> |
+<%= link_to 'Back', tables_path %>

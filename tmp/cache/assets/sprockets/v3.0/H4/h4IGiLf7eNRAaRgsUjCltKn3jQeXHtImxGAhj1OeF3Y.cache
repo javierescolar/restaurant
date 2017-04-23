@@ -1,0 +1,17 @@
+I"(function() {
+  var run;
+
+  run = function() {
+    $('#notice').remove();
+    return $('#error_explanation').remove();
+  };
+
+  setTimeout(run, 3500);
+
+  $('#generatePass').click(function() {
+    $('#user_password').val('prueba');
+    return console.log('hola');
+  });
+
+}).call(this);
+:ET

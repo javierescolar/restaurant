@@ -1,0 +1,16 @@
+// Place all the styles related to the Auth controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#form-login{
+  margin: 4em auto;
+  background-color:#eceeef;
+  padding:3em;
+  border-radius:2em;
+  -webkit-box-shadow: 9px 9px 15px -1px rgba(148,148,148,0.62);
+  -moz-box-shadow: 9px 9px 15px -1px rgba(148,148,148,0.62);
+  box-shadow: 9px 9px 15px -1px rgba(148,148,148,0.62);
+}
+#form-login label{
+  color: grey;
+}

@@ -1,0 +1,39 @@
+<h1 class="head-title-form"> Tables</h1>
+<div class="container">
+  <% if !notice.nil? %>
+  <p id="notice" class="notice-good"><%= notice %></p>
+  <% end %>
+  <div class="table-responsive">
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Capacity</th>
+      <th>Free</th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tables.each do |table| %>
+      <tr>
+        <td><%= table.number %></td>
+        <td><%= table.capacity %></td>
+        <td><%= table.free %></td>
+
+      <!--  <td><%= link_to 'Show', table ,class:"btn btn-default btn-sm"%></td> -->
+        <td>
+          <%= link_to 'Edit', edit_table_path(table) ,class:"btn btn-default btn-sm"%>
+          <%= link_to 'Destroy', table, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-default btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Table', new_table_path, class: "font_size_no_p" %>
+
+</div>

@@ -1,0 +1,88 @@
+<h1 class="head-title-form"> Show Command</h1>
+<div class="container">
+  <% if !notice.nil? %>
+  <p id="notice" class="notice-good"><%= notice %></p>
+  <% end %>
+  <div class="ticket">
+
+
+
+    <h3 class="head-forms text-center">Command</h3>
+    <div class="box-ticket">
+    <div class="row">
+        <div class="col">
+          Nº: <ins><%= @command.id%><ins>
+        </div>
+        <div class="col">
+          <p>Table: <ins><%= @command.table.number %></ins> </p>
+        </div>
+        <div class="col">
+          <%= @command.created_at.strftime("%Y-%m-%d %H:%M") %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col underline">
+          Description
+        </div>
+        <div class="col underline">
+          Price
+        </div>
+    </div>
+
+    <% @command.plates.each do |p| %>
+    <div class="row">
+      <div class="col">
+        <%= form_tag("/removePlateCommand", method: "delete",:command=>@command.id,:plate=>p.id) do %>
+          <%= hidden_field_tag :command, @command.id %>
+          <%= hidden_field_tag :plate, p.id %>
+          <%= submit_tag "Remove",class: "btn btn-default btn-sm"  %>
+        <% end %>
+      </div>
+      <div class="col">
+        <%= p.name %>
+      </div>
+      <div class="col">
+        <%= p.price %> €
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col underline">
+      </div>
+      <div class="col underline">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col">
+        Total   <%= @command.amount %> €
+      </div>
+      </div>
+      <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+          <%= link_to 'Close Command' , {controller: "commands", action: "receivable",:id => @command.id},class: "btn btn-default btn-sm" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+<%= link_to '<<', commands_path,class:"btn btn-default btn-sm" %>
+<%= link_to 'Edit', edit_command_path(@command),class:"btn btn-default btn-sm" %>
+<%= link_to 'Add Plates', { controller: "commands_plates", action: "index", command: @command.id } ,class: "btn btn-default btn-sm"%>
+
+</div>

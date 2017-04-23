@@ -1,0 +1,89 @@
+<h1 class="head-title-form"> User</h1>
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+        <b>Personal data</b>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-3 col-sm-12">
+      <p><b>Profile:</b></p>
+      <i><%= @user.profile.name %></i>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <p><b>Dni:</b></p>
+      <i><%= @user.dni %></i>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <p><b>Name:</b></p>
+      <i><%= @user.name %></i>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <p><b>Surnames:</b></p>
+      <i><%= @user.surnames %></i>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-3 col-sm-12">
+      <p><b>Birthdate:</b></p>
+      <i><%= @user.birthdate %></i>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <p><b>Mail:</b></p>
+      <i><%= @user.mail %></i>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <p><b>Phone 1:</b></p>
+      <i><%= @user.phone_1 %></i>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <p><b>Phone 2:</b></p>
+      <i><%= @user.phone_2 %></i>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col">
+        <b>Permissions</b>
+    </div>
+  </div>
+  <hr>
+<div class="row">
+  <div class="col-md-3 col-sm-6">
+    <p><b>Orders:</b></p>
+    <i><%= @user.orders %></i>
+  </div>
+  <div class="col-md-3 col-sm-6">
+    <p><b>Menu:</b></p>
+    <i><%= @user.menu %></i>
+  </div>
+  <div class="col-md-3 col-sm-6">
+    <p><b>Create Plate:</b></p>
+    <i><%= @user.create_plate %></i>
+  </div>
+  <div class="col-md-3 col-sm-6">
+    <p><b>Category:</b></p>
+    <i><%= @user.category %></i>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3 col-sm-6">
+    <p><b>Tables:</b></p>
+    <i><%= @user.tables %></i>
+  </div>
+  <div class="col-md-3 col-sm-6">
+    <p><b>Orders History:</b></p>
+    <i><%= @user.orders_history %></i>
+  </div>
+</div>
+<br>
+<p>
+    <%= link_to '<<', users_path,class:"btn btn-default btn-sm" %>
+    <%= link_to 'Edit', edit_user_path(@user),class:"btn btn-default btn-sm" %>
+</p>
+
+</div>

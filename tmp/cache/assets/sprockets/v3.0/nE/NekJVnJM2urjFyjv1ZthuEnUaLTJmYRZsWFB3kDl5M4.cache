@@ -1,0 +1,5 @@
+I"C(function() {
+  alert("Hello CoffeeScript!");
+
+}).call(this);
+:ET

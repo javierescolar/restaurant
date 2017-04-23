@@ -1,0 +1,41 @@
+<div class="col-md-10 forms-centers">
+<%= form_for(table) do |f| %>
+  <% if table.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(table.errors.count, "error") %> prohibited this table from being saved:</h2>
+
+      <ul>
+      <% table.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <div class="field">
+        <%= f.label :number %>
+        <%= f.number_field :number, class:"form-control form-control-sm" %>
+      </div>
+    </div>
+    <div class="col-md-5 col-xs-12">
+      <div class="field">
+        <%= f.label :capacity %>
+        <%= f.number_field :capacity, class:"form-control form-control-sm" %>
+      </div>
+    </div>
+    <div class="col-md-1 col-xs-12">
+      <div class="field">
+        <%= f.label :free %>
+        <%= f.check_box :free, class:"form-control form-control-sm" %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="actions">
+    <%= link_to '<<', tables_path,class:"btn btn-default btn-sm" %>
+    <%= f.submit 'Save', class: "btn btn-default btn-sm" %>
+  </div>
+<% end %>
+</div>

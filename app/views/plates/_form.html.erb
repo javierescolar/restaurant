@@ -1,0 +1,59 @@
+<div class="col-md-10 forms-centers">
+
+
+<%= form_for(plate, :multipart => true) do |f| %>
+  <% if plate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plate.errors.count, "error") %> prohibited this plate from being saved:</h2>
+
+      <ul>
+      <% plate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="col-md-4 col-xs-12">
+    <div class="field">
+      <%= f.label :category_id %>
+      <%= f.select :category_id, options_for_select(@categories.map{ |c| [c.name, c.id ]}),{}, { class: 'form-control form-control-sm'} %>
+    </div>
+  </div>
+  <div class="col-md-8 col-xs-12">
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name ,class:"form-control form-control-sm" %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description ,class:"form-control form-control-sm" %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 col-xs-12">
+    <div class="field">
+      <%= f.label :photo %>
+      <%= f.file_field :photo ,class:"form-control form-control-sm" %>
+    </div>
+  </div>
+  <div class="col-md-2 col-xs-12">
+    <div class="field">
+      <%= f.label :price %>
+      <%= f.text_field :price ,class:"form-control form-control-sm" %>
+    </div>
+  </div>
+</div>
+<br>
+
+  <div class="actions">
+    <%= link_to '<<', plates_path ,class:"btn btn-default btn-sm" %>
+    <%= f.submit 'Save', class:"btn btn-default btn-sm"%>
+  </div>
+<% end %>
+</div>

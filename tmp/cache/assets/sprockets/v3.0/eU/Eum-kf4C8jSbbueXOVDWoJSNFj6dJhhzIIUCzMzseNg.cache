@@ -1,0 +1,25 @@
+I"4(function() {
+  var generatePass, run;
+
+  run = function() {
+    $('#notice').remove();
+    return $('#error_explanation').remove();
+  };
+
+  setTimeout(run, 3500);
+
+  generatePass = function() {
+    var caracteres, contrasena, i, long;
+    long = 8;
+    caracteres = 'abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789';
+    contrasena = '';
+    i = 0;
+    while (i < long) {
+      contrasena += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+      i++;
+    }
+    document.getElementById('pass').innerHTML = contrasena;
+  };
+
+}).call(this);
+:ET

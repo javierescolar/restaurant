@@ -1,0 +1,16 @@
+I"Ø(function() {
+  var run;
+
+  run = function() {
+    $('#notice').remove();
+    return $('#error_explanation').remove();
+  };
+
+  setTimeout(run, 3500);
+
+  $(function() {
+    return alert("hola");
+  });
+
+}).call(this);
+:ET

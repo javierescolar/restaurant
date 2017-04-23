@@ -1,0 +1,11 @@
+I"€(function() {
+  var run;
+
+  run = function() {
+    return $('#notice').remove();
+  };
+
+  setTimeout(run, 3000);
+
+}).call(this);
+:ET

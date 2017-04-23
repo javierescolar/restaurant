@@ -1,0 +1,14 @@
+I"¸(function() {
+  var run;
+
+  run = function() {
+    $('#notice').remove();
+    return $('#error_explanation').remove();
+  };
+
+  setTimeout(run, 3500);
+
+  alert("hola");
+
+}).call(this);
+:ET

@@ -1,0 +1,46 @@
+
+<h1 class="head-title-form"> Users</h1>
+<div class="container">
+  <% if !notice.nil? %>
+  <p id="notice" class="notice-good"><%= notice %></p>
+  <% end %>
+  <div class="table-responsive">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>Profile</th>
+        <th>Dni</th>
+        <th>Name</th>
+        <th>Surnames</th>
+        <th>Birthdate</th>
+        <th>Phone 1</th>
+        <th>Phone 2</th>
+        <th>Mail</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.profile.name.to_s %></td>
+          <td><%= user.dni %></td>
+          <td><%= user.name %></td>
+          <td><%= user.surnames %></td>
+          <td><%= user.birthdate %></td>
+          <td><%= user.phone_1 %></td>
+          <td><%= user.phone_2 %></td>
+          <td><%= user.mail %></td>
+          <td><%= link_to 'Show', user,class:"btn btn-default btn-sm" %>
+              <%= link_to 'Edit', edit_user_path(user),class:"btn btn-default btn-sm" %>
+              <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-default btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  <br>
+
+  <%= link_to 'New User', new_user_path, class: "font_size_no_p" %>
+</div>

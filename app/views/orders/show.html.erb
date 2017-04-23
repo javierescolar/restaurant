@@ -1,0 +1,88 @@
+<h1 class="head-title-form"> Show Order</h1>
+<div class="container">
+  <% if !notice.nil? %>
+  <p id="notice" class="notice-good"><%= notice %></p>
+  <% end %>
+  <div class="ticket">
+
+
+
+    <h3 class="head-forms text-center">Order</h3>
+    <div class="box-ticket">
+    <div class="row">
+        <div class="col">
+          Nº: <ins><%= @order.id%><ins>
+        </div>
+        <div class="col">
+          <p>Table: <ins><%= @order.table.number %></ins> </p>
+        </div>
+        <div class="col">
+          <%= @order.created_at.strftime("%Y-%m-%d %H:%M") %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col underline">
+          Description
+        </div>
+        <div class="col underline">
+          Price
+        </div>
+    </div>
+
+    <% @order.plates.each do |p| %>
+    <div class="row">
+      <div class="col">
+        <%= form_tag("/removePlateOrder", method: "delete",:order=>@order.id,:plate=>p.id) do %>
+          <%= hidden_field_tag :order, @order.id %>
+          <%= hidden_field_tag :plate, p.id %>
+          <%= submit_tag "Remove",class: "btn btn-default btn-sm"  %>
+        <% end %>
+      </div>
+      <div class="col">
+        <%= p.name %>
+      </div>
+      <div class="col">
+        <%= p.price %> €
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col underline">
+      </div>
+      <div class="col underline">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col">
+        Total   <%= @order.amount %> €
+      </div>
+      </div>
+      <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+          <%= link_to 'Close Order' , {controller: "orders", action: "receivable",:id => @order.id},class: "btn btn-default btn-sm" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+<%= link_to '<<', orders_path,class:"btn btn-default btn-sm" %>
+<%= link_to 'Edit', edit_order_path(@order),class:"btn btn-default btn-sm" %>
+<%= link_to 'Add Plates', { controller: "orders_plates", action: "index", order: @order.id } ,class: "btn btn-default btn-sm"%>
+
+</div>

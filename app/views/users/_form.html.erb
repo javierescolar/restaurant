@@ -1,0 +1,134 @@
+<div class="col-md-10 forms-centers">
+<%= form_for(user) do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<b>Personal data</b>
+<hr>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <div class="field">
+        <%= f.label :profile_id %>
+        <%= f.select :profile_id, options_for_select(@profiles.map{ |c| [c.name, c.id ]}),{}, { class: 'form-control form-control-sm'} %>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="field">
+        <%= f.label :dni %>
+        <%= f.text_field :dni ,class:"form-control form-control-sm" %>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="field">
+        <%= f.label :birthdate %>
+        <%= f.date_field :birthdate ,class:"form-control form-control-sm"%>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name ,class:"form-control form-control-sm"%>
+      </div>
+    </div>
+    <div class="col-md-8 col-xs-12">
+      <div class="field">
+        <%= f.label :surnames %>
+        <%= f.text_field :surnames ,class:"form-control form-control-sm"%>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-xs-12">
+      <div class="field">
+        <%= f.label :phone_1 %>
+        <%= f.number_field :phone_1 ,class:"form-control form-control-sm"%>
+      </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+      <div class="field">
+        <%= f.label :phone_2 %>
+        <%= f.number_field :phone_2,class:"form-control form-control-sm" %>
+      </div>
+    </div>
+    <div class="col-md-5 col-xs-12">
+      <div class="field">
+        <%= f.label :mail %>
+        <%= f.email_field :mail ,class:"form-control form-control-sm"%>
+      </div>
+    </div>
+    <div class="col-md-2 col-xs-10">
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.text_field :password ,class:"form-control form-control-sm",:readonly=>true%>
+      </div>
+    </div>
+    <div class="col-md-1 col-xs-2">
+      <div class="field">
+        <p class="btn btn-sm btn-primary"id="generatePass">Generate</p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <b>Permissions</b>
+  <hr>
+  <div class="row">
+    <div class="col-md-4 col-xs-12">
+      <div class="field">
+        <p><%= f.label :orders,class:"form-check-label" %></p>
+        <p><%= f.check_box :orders ,class:"form-control form-control-sm"%></p>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="field">
+        <p><%= f.label :menu,class:"form-check-label" %></p>
+        <p><%= f.check_box :menu ,class:"form-control form-control-sm"%></p>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="field">
+        <p><%= f.label :create_plate,class:"form-check-label" %></p>
+        <p><%= f.check_box :create_plate ,class:"form-control form-control-sm"%></p>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="field">
+        <p><%= f.label :category,class:"form-check-label" %></p>
+        <p><%= f.check_box :category ,class:"form-control form-control-sm"%></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-xs-12">
+      <div class="field">
+        <p><%= f.label :tables,class:"form-check-label" %></p>
+        <p><%= f.check_box :tables ,class:"form-control form-control-sm"%></p>
+      </div>
+    </div>
+    <div class="col-md-3 col-xs-12">
+      <div class="field">
+        <p><%= f.label :orders_history,class:"form-check-label" %></p>
+        <p><%= f.check_box :orders_history ,class:"form-control form-control-sm"%></p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="actions">
+    <%= link_to '<<', users_path,class:"btn btn-default btn-sm" %>
+    <%= f.submit 'Save',class:"btn btn-default btn-sm"%>
+  </div>
+<% end %>
+</div>

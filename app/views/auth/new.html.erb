@@ -1,0 +1,25 @@
+<div class="container">
+
+  <div class="col-md-6 col-xs-12" id="form-login">
+    <%= image_tag("app-restaurante.png", :alt => "logo", class:'img-fluid') %>
+    <%= form_tag("/login", method: "post",class:"form") do %>
+    <div class="field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, '',class:  "form-control" %>
+    </div>
+      <div class="field">
+        <%= label_tag :password %>
+        <%= password_field_tag :password,'',class:  "form-control" %>
+      </div>
+      <br>
+      <% if !notice.nil? %>
+      <p><%= notice %></p>
+      <% end %>
+    <div class="actions">
+        <%= submit_tag "Log In", class:'btn btn-primary form-control' %>
+    </div>
+
+    <% end %>
+  </div>
+
+</div>

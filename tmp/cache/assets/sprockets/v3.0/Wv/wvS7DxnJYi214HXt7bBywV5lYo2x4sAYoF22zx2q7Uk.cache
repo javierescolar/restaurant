@@ -1,0 +1,18 @@
+I"`(function() {
+  var run;
+
+  run = function() {
+    $('#notice').remove();
+    return $('#error_explanation').remove();
+  };
+
+  setTimeout(run, 3500);
+
+  (function() {
+    return document.getElementById('generatePass').addEventListener('click', function() {
+      document.getelementById('user_password').value = 'prueba';
+    });
+  });
+
+}).call(this);
+:ET

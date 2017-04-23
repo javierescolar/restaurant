@@ -1,0 +1,7 @@
+I"l(function() {
+  $("nav li a").click(function() {
+    return alert("submitted!");
+  });
+
+}).call(this);
+:ET

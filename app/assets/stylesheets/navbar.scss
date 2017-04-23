@@ -1,0 +1,74 @@
+#logo {
+  width: 8em;
+}
+
+//@MEDIA CSS
+@media screen and (min-width: 992px) {
+  nav {
+    background: $blue-light;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, $blue-light), color-stop(100%, $blue-dark));
+    background: -webkit-linear-gradient(top, $blue-light 0%, $blue-dark 100%);
+    background: linear-gradient(to bottom, $blue-light 0%, $blue-dark 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$blue-light', endColorstr='$blue-dark', GradientType=0 );
+    font-family: sans-serif;
+    height:3em;
+    font-size:0.8em;
+  }
+
+  nav li a {
+    color:$font-light !important;
+    padding:0.75em !important;
+  }
+  nav li a:hover {
+    background-color:black !important;
+  }
+
+  .dropdown-item{
+    height:2em !important;
+    color:black !important;
+    padding-bottom: 2em !important;
+    font-size:0.8em;
+  }
+  .dropdown-item:hover{
+    color:white !important;
+  }
+}
+
+//@MEDIAS DESDE AQUI
+@media screen and (max-width: 992px) {
+  .navbar-brand{
+    height:2em;
+  }
+  nav {
+    background: $blue-light;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, $blue-light), color-stop(100%, $blue-dark));
+    background: -webkit-linear-gradient(top, $blue-light 0%, $blue-dark 100%);
+    background: linear-gradient(to bottom, $blue-light 0%, $blue-dark 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$blue-light', endColorstr='$blue-dark', GradientType=0 );
+    font-family: sans-serif;
+  }
+
+  nav li a {
+    color:$font-light !important;
+  }
+
+  nav li a:hover {
+    background-color:black !important;
+    color:white !important;
+  }
+
+  nav li a.dropdown-item{
+    color:black !important;
+  }
+  nav li a.dropdown-item:hover{
+    color:white !important;
+  }
+
+}
+
+
+@media (min-width: 768px){
+    .left-options-nav{
+      margin-left:-5.5em !important;
+    }
+}

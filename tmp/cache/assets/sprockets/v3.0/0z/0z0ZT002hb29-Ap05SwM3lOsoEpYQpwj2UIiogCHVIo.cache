@@ -1,0 +1,27 @@
+I"‚(function() {
+  var run;
+
+  run = function() {
+    $('#notice').remove();
+    return $('#error_explanation').remove();
+  };
+
+  setTimeout(run, 3500);
+
+  $(function() {
+    return $('body').on('click', '#generatePass', function() {
+      var caracteres, contrasena, i;
+      caracteres = 'abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789';
+      contrasena = '';
+      i = 0;
+      while (i < 8) {
+        contrasena += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        i++;
+      }
+      $('#user_password').removeAttr('readonly');
+      return $('#user_password').val(contrasena);
+    });
+  });
+
+}).call(this);
+:ET

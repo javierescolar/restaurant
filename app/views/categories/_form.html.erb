@@ -1,0 +1,25 @@
+<div class="col-md-6 forms-centers">
+<%= form_for(category) do |f| %>
+  <% if category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name ,  class: "form-control form-control-sm " %>
+  </div>
+<br>
+  <div class="actions">
+    <%= link_to '<<', categories_path ,class: "btn btn-default btn-sm"%>
+    <%= f.submit 'Save', class: "btn btn-default btn-sm" %>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,9 @@
+I"~(function() {
+  (function() {
+    return console.log("run was called!");
+  });
+
+  setTimeout(run, 1000);
+
+}).call(this);
+:ET

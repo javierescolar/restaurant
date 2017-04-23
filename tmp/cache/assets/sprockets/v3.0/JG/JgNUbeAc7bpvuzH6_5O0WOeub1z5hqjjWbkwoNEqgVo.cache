@@ -1,0 +1,7 @@
+I"}(function() {
+  $("nav li a").on("click", function() {
+    return console.log("button clicked!");
+  });
+
+}).call(this);
+:ET

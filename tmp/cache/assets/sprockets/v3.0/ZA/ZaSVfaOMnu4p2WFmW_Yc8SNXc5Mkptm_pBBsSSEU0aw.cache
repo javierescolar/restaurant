@@ -1,0 +1,19 @@
+I"
+(function() {
+  var run;
+
+  run = function() {
+    $('#notice').remove();
+    return $('#error_explanation').remove();
+  };
+
+  setTimeout(run, 3500);
+
+  (function() {});
+
+  $('#generatePass').click(function() {
+    return console.log('click');
+  });
+
+}).call(this);
+:ET

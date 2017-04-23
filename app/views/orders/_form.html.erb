@@ -1,0 +1,32 @@
+<div class="col-md-6 forms-centers">
+<%= form_for(order) do |f| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+  <%= f.label :user_id %>
+  <%= f.select :user_id, options_for_select(@users.map{ |c| [c.name+" "+c.surnames, c.id ]}),{}, { class: 'form-control form-control-sm'}  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :table_id %>
+    <%= f.select :table_id, options_for_select(@tables.map{ |c| ["Nº "+c.number.to_s, c.id ]}),{}, { class: 'form-control form-control-sm'} %>
+  </div>
+
+
+  <div class="actions">
+      <%= link_to '<<', orders_path ,class:"btn btn-default btn-sm" %>
+    <%= f.submit 'Save', class: "btn btn-default btn-sm" %>
+  </div>
+<% end %>
+</div>
