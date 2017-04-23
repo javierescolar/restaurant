@@ -13,7 +13,7 @@ class Order < ApplicationRecord
   def addPlate(plate_id)
     @plate = Plate.find(plate_id)
     self.amount += @plate.price.to_f
-    OrderPlate.new(order_id:self.id,plate_id: @plate.id).save
+    OrderPlate.new(order_id:self.id,plate_id: @plate.id,prepared:false).save
     self.save
   end
 
@@ -22,6 +22,14 @@ class Order < ApplicationRecord
     self.amount -= @plate.price.to_f
     OrderPlate.find_by(order_id:self.id,plate_id: @plate.id).destroy.save
     self.save
+  end
+
+  def sendKitchen
+    if self.kitchen == false
+      self.kitchen = true
+      self.delivery_time_kitchen = Time.now
+      self.save
+    end
   end
 
 end

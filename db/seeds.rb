@@ -5,9 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Profile.create([name: 'Administrator'])
-Category.create([name: 'Combo'])
-User.create([name: 'Admin',mail:'admin',password: Digest::MD5.hexdigest('admin'),profile_id:1])
-Table.create([number:57])
-Plate.create([name:'Plato prueba',category_id:1,photo:'potatoes.jpg',price:8.75])
-Plate.create([name:'Plato prueba 2',category_id:1,photo:'fingers.jpg',price:7.5])
+
+#Perfiles precargados de la Aplicacion
+Profile.create([name: 'Administrator'])#id = 1
+Profile.create([name: 'Chef'])#id = 2
+Profile.create([name: 'Waiter'])#id = 3
+
+#usuario precargados de la Aplicacion
+User.create([
+    profile_id:1,
+    dni: '00000000A',
+    name: 'Admin',
+    surnames:'Admin Admin',
+    phone_1:666666666,
+    mail:'admin@admin.es',
+    password: Digest::MD5.hexdigest('admin')
+])

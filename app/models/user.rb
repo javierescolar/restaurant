@@ -15,4 +15,7 @@ class User < ApplicationRecord
     end
   end
 
+  def whatIsMyProfile
+    return self.profile_id
+  end
 end

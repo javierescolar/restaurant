@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   #routes de la ordera
   resources :orders
   get '/orders/receivable/:id', to: 'orders#receivable'
+  get '/orders/sendKitchen/:id', to: 'orders#sendKitchen'
   get '/orders_history', to: 'orders#history'
 
   resources :plates

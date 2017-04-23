@@ -15,8 +15,8 @@
         <th>User</th>
         <th>Table</th>
         <th>Amount</th>
-        <th>Paid</th>
-        <th>Date</th>
+        <th>Creation Time</th>
+        <th>Delivery Time Kitchen</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -28,8 +28,14 @@
           <td><%= order.user.name.to_s+" "+order.user.surnames.to_s %></td>
           <td><%= order.table.number %></td>
           <td><%= order.amount %></td>
-          <td><%= order.paid %></td>
-          <td><%= order.created_at %></td>
+          <td><%= order.created_at.strftime("%H:%M:%S") %></td>
+          <td>
+            <%if(order.delivery_time_kitchen.nil?)%>
+            Not sent
+            <%else%>
+            <%= order.delivery_time_kitchen.strftime("%H:%M:%S") %>
+            <%end%>
+          </td>
           <td><%= link_to 'Show', order,class:"btn btn-default btn-sm" %></td>
           <td><%= link_to 'Edit', edit_order_path(order),class:"btn btn-default btn-sm" %></td>
           <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-default btn-sm" %></td>

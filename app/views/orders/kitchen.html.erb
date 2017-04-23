@@ -1,0 +1,42 @@
+<h1 class="head-title-form"> Orders Kitchen</h1>
+  <div class="container">
+    <% if !notice.nil? %>
+    <p id="notice" class="notice-good"><%= notice %></p>
+    <% end %>
+
+<% @orders.each do |order| %>
+  <div class="table-responsive">
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th colspan="3">Order Nº <%= order.id %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th>User</th>
+          <th>Table</th>
+          <th>Delivery Time Kitchen</th>
+        </tr>
+        <tr>
+          <td><%= order.user.name.to_s+" "+order.user.surnames.to_s %></td>
+          <td><%= order.table.number %></td>
+          <td><%= order.delivery_time_kitchen.strftime("%H:%M:%S") %></td>
+        </tr>
+        <tr>
+          <th>Dish Name</th>
+          <th>Created</th>
+          <th>Prepared</th>
+        </tr>
+        <% order.plates.each do |plate| %>
+          <tr>
+            <td><%= plate.name %></td>
+            <td>Time</td>
+            <td>NO</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

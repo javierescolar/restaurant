@@ -15,7 +15,7 @@
 
   <div class="field">
   <%= f.label :user_id %>
-  <%= f.select :user_id, options_for_select(@users.map{ |c| [c.name+" "+c.surnames, c.id ]}),{}, { class: 'form-control form-control-sm'}  %>
+  <%= f.select :user_id, options_for_select(@users.map{ |c| [c.name+" "+c.surnames, c.id ]},selected_key = session[:auth]['id']),{}, { class: 'form-control form-control-sm'}  %>
   </div>
 
   <div class="field">

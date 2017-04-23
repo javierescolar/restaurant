@@ -1,19 +1,26 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy,:receivable]
+  before_action :set_order, only: [:show, :edit, :update, :destroy,:receivable, :sendKitchen]
   before_action :ordersPermissions, except: [:history]
   before_action :ordersHistoryPermissions, only: [:history]
   # GET /orders
   # GET /orders.json
   def index
+    if session[:auth]['profile_id'] == 2
+      @orders = Order.where(kitchen:true,paid:false)
+      render :kitchen
+    end
     @orders = Order.where(paid:false)
-    @tables = Table.where(free:true)
-    if (@tables.count == 0)
+    if (Table.where(free:true).count == 0)
         flash[:notice_tables] = "No tables available"
     end
   end
 
+  def kitchen
+      @orders = Order.where(kitchen:true,paid:false)
+  end
+
   def history
-    @orders = Order.where(paid:true)
+    @orders = Order.where(paid:true).order('created_at asc')
   end
   # GET /orders/1
   # GET /orders/1.json
@@ -84,6 +91,12 @@ class OrdersController < ApplicationController
   def receivable
     @order.closeOrder
     flash[:notice] = "the order has been paid"
+    redirect_to orders_path
+  end
+
+  def sendKitchen
+    @order.sendKitchen
+    flash[:notice] = "the order has been sent"
     redirect_to orders_path
   end
 
