@@ -6,7 +6,9 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     if session[:auth]['profile_id'] == 2
-      @orders = Order.where(kitchen:true,paid:false)
+      @dishes = OrderPlate.joins(:order).where('orders.kitchen = true and orders.paid = false').order('orders.id,created_at')
+      #@orders = Order.where(kitchen:true,paid:false)
+      @order = 0
       render :kitchen
     end
     @orders = Order.where(paid:false)
@@ -16,7 +18,7 @@ class OrdersController < ApplicationController
   end
 
   def kitchen
-      @orders = Order.where(kitchen:true,paid:false)
+      #@orders = Order.where(kitchen:true,paid:false)
   end
 
   def history

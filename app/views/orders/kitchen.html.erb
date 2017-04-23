@@ -4,39 +4,38 @@
     <p id="notice" class="notice-good"><%= notice %></p>
     <% end %>
 
-<% @orders.each do |order| %>
-  <div class="table-responsive">
-    <table class="table table-sm">
+    <div class="table-responsive">
+      <table class="table table-sm">
       <thead>
         <tr>
-          <th colspan="3">Order Nº <%= order.id %></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
+          <th>Order</th>
           <th>User</th>
           <th>Table</th>
-          <th>Delivery Time Kitchen</th>
-        </tr>
-        <tr>
-          <td><%= order.user.name.to_s+" "+order.user.surnames.to_s %></td>
-          <td><%= order.table.number %></td>
-          <td><%= order.delivery_time_kitchen.strftime("%H:%M:%S") %></td>
-        </tr>
-        <tr>
           <th>Dish Name</th>
-          <th>Created</th>
+          <th>Delivery Time</th>
           <th>Prepared</th>
+          <th></th>
         </tr>
-        <% order.plates.each do |plate| %>
-          <tr>
-            <td><%= plate.name %></td>
-            <td>Time</td>
-            <td>NO</td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-<% end %>
+      </thead>
+ <% @dishes.each do |dish| %>
+      <tbody>
+
+        <tr>
+          <td><%= dish.id %></td>
+          <td><%= dish.order.user.name.to_s+" "+dish.order.user.surnames.to_s %></td>
+          <td><%= dish.order.table.number %></td>
+          <td><%= dish.plate.name %></td>
+          <td>
+            <%if dish.order.delivery_time_kitchen.strftime("%H:%M:%S") > dish.created_at.strftime("%H:%M:%S")%>
+              <%=  dish.order.delivery_time_kitchen.strftime("%H:%M:%S") %>
+            <%else%>
+              <%= dish.created_at.strftime("%H:%M:%S") %>
+            <%end%>
+          </td>
+          <td><%= dish.prepared %></td>
+          <td><%= link_to 'Yes/No', '',class:"btn btn-default btn-sm" %></td>
+        </tr>
+    </tbody>
+  <% end%>
+</table>
+</div>
