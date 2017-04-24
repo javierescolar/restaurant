@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :posts
   #definimos el root_path
   root :to => 'auth#index'
 

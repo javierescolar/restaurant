@@ -1,9 +1,11 @@
 class AuthController < ApplicationController
   skip_before_action :authorize
+
   def index
     unless (!session[:auth].nil?)
       render :new
     end
+      @posts = Post.all
   end
 
   def new

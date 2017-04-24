@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402200032) do
+ActiveRecord::Schema.define(version: 20170424160516) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(version: 20170402200032) do
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "table_id"
-    t.float    "amount",     limit: 24, default: 0.0
-    t.boolean  "paid",                  default: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.float    "amount",                limit: 24, default: 0.0
+    t.boolean  "paid",                             default: false
+    t.boolean  "kitchen",                          default: false, null: false
+    t.datetime "delivery_time_kitchen"
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.index ["table_id"], name: "index_orders_on_table_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
@@ -32,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170402200032) do
   create_table "orders_plates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "order_id"
     t.integer  "plate_id"
+    t.boolean  "prepared",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "my_index_order_on_plate", using: :btree
@@ -47,6 +50,13 @@ ActiveRecord::Schema.define(version: 20170402200032) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["category_id"], name: "index_plates_on_category_id", using: :btree
+  end
+
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

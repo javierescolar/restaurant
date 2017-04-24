@@ -1,8 +1,16 @@
-<div class="container">
 
-  <h1>New</h1>
-  <p>
-    La funcionalidad de esta vista será la de mostrar noticias de actualizaciones, soli¡ución de errors y nuevas mejoras
-  desarrolladas por el departamento
-  </p>
+<h1 class="head-title-form"> News</h1>
+<div class="container">
+  <% @posts.each do |post| %>
+  <div class="col-md-6 indexPost">
+    <p>
+      <% if newPost(post.created_at)%>
+        <span class="newPost">New</span>
+      <% end %>
+    <%= formatDateTime(post.created_at) %>
+    </p>
+    <p><b><%= post.title %></b></p>
+    <p><%= post.description %></p>
+  </div>
+  <% end %>
 </div>

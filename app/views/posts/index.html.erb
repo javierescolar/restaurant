@@ -1,0 +1,32 @@
+<h1 class="head-title-form"> Posts</h1>
+<div class="container">
+  <% if !notice.nil? %>
+  <p id="notice" class="notice-good"><%= notice %></p>
+  <% end %>
+<div class="table-responsive">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Created</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= formatDateTime(post.created_at) %></td>
+          <td><%= link_to 'Show', post ,class: "btn btn-default btn-sm"%></td>
+          <td><%= link_to 'Edit', edit_post_path(post),class: "btn btn-default btn-sm" %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+
+<%= link_to 'New Post', new_post_path, class: "font_size_no_p" %>
+</div>

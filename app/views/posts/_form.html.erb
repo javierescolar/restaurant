@@ -1,0 +1,30 @@
+<div class="col-md-6 forms-centers">
+<%= form_for(post) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control form-control-sm"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description,class: "form-control form-control-sm" %>
+  </div>
+
+  <div class="actions">
+    <%= link_to '<<', posts_path,class:'btn btn-default btn-sm' %>
+    <%= f.submit 'Save',class:'btn btn-default btn-sm' %>
+  </div>
+<% end %>
+</div>
