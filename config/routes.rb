@@ -25,4 +25,7 @@ Rails.application.routes.draw do
   get '/orders/:id/plates', to: 'orders_plates#index'
   post '/addPlateOrder', to: 'orders_plates#addPlateOrder'
   delete '/removePlateOrder', to: 'orders_plates#removePlateOrder'
+
+  #Route para marcar plato como preparado
+  post '/preparedDish', to: 'orders#preparedDish'
 end

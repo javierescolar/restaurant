@@ -33,7 +33,13 @@
             <%end%>
           </td>
           <td><%= dish.prepared %></td>
-          <td><%= link_to 'Yes/No', '',class:"btn btn-default btn-sm" %></td>
+          <td>
+            <%= form_tag("/preparedDish", method: "post",:dish=>dish.id) do %>
+              <%= hidden_field_tag :dish,dish.id %>
+              <%= submit_tag "Yes/No",class: "btn btn-default btn-sm col-12"  %>
+            <% end %>
+          </td>
+
         </tr>
     </tbody>
   <% end%>

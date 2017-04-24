@@ -22,4 +22,5 @@ class OrdersPlatesController < ApplicationController
     redirect_to @order
   end
 
+  
 end
