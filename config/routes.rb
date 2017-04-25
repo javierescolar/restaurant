@@ -23,10 +23,10 @@ Rails.application.routes.draw do
 
 
   #Routes agregar platos a la orders_path
-  get '/orders/:id/plates', to: 'orders_plates#index'
-  post '/addPlateOrder', to: 'orders_plates#addPlateOrder'
-  delete '/removePlateOrder', to: 'orders_plates#removePlateOrder'
+  get '/orders/:id/plates', to: 'charges#index'
+  post '/addCharge', to: 'charges#addCharge'
+  delete '/removeCharge', to: 'charges#removeCharge'
 
   #Route para marcar plato como preparado
-  post '/preparedDish', to: 'orders#preparedDish'
+  post '/preparedDish', to: 'charges#preparedDish'
 end

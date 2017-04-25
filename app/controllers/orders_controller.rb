@@ -6,8 +6,8 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     if session[:auth]['profile_id'] == 2
-      @dishes = OrderPlate.joins(:order).where('orders.kitchen = true and orders.paid = false').order('orders.id,created_at')
-      #@orders = Order.where(kitchen:true,paid:false)
+      #@dishes = OrderPlate.joins(:order).where('orders.kitchen = true and orders.paid = false').order('orders.id,created_at')
+      @orders = Order.where(kitchen:true,paid:false)
       render :kitchen
     end
     @orders = Order.where(paid:false)
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def kitchen
-      @dishes = OrderPlate.joins(:order).where('orders.kitchen = true and orders.paid = false').order('orders.id,created_at')
+      @orders = Order.where(kitchen:true,paid:false)
       #@orders = Order.where(kitchen:true,paid:false)
   end
 
@@ -102,11 +102,7 @@ class OrdersController < ApplicationController
     redirect_to orders_path
   end
 
-  def preparedDish
-    @dish_order = OrderPlate.find(params[:dish])
-    @dish_order.preparedDishYesNo
-    redirect_to orders_path
-  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

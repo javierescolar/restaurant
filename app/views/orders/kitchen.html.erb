@@ -17,7 +17,9 @@
           <th></th>
         </tr>
       </thead>
- <% @dishes.each do |dish| %>
+ <% @orders.each do |dishes| %>
+
+  <% dishes.charges.each do |dish| %>
       <tbody>
 
         <tr>
@@ -42,6 +44,7 @@
 
         </tr>
     </tbody>
+    <% end%>
   <% end%>
 </table>
 </div>

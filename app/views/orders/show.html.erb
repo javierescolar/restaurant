@@ -30,20 +30,20 @@
         </div>
     </div>
 
-    <% @order.plates.each do |p| %>
+    <% @order.charges.each do |charge| %>
     <div class="row">
       <div class="col">
-        <%= form_tag("/removePlateOrder", method: "delete",:order=>@order.id,:plate=>p.id) do %>
+        <%= form_tag("/removeCharge", method: "delete",:order=>@order.id,:charge=>charge.id) do %>
           <%= hidden_field_tag :order, @order.id %>
-          <%= hidden_field_tag :plate, p.id %>
+          <%= hidden_field_tag :charge, charge.id %>
           <%= submit_tag "Remove",class: "btn btn-default btn-sm"  %>
         <% end %>
       </div>
       <div class="col">
-        <%= p.name %>
+        <%= charge.plate.name %>
       </div>
       <div class="col">
-        <%= p.price %> €
+        <%= charge.plate.price %> €
       </div>
       <div class="col">
       </div>
@@ -83,6 +83,6 @@
 
 <%= link_to '<<', orders_path,class:"btn btn-default btn-sm" %>
 <%= link_to 'Edit', edit_order_path(@order),class:"btn btn-default btn-sm" %>
-<%= link_to 'Add Plates', { controller: "orders_plates", action: "index", order: @order.id } ,class: "btn btn-default btn-sm"%>
+<%= link_to 'Add Plates', { controller: "charges", action: "index", order: @order.id } ,class: "btn btn-default btn-sm"%>
 
 </div>

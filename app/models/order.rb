@@ -1,7 +1,9 @@
 class Order < ApplicationRecord
   belongs_to :user
   belongs_to :table
-  has_and_belongs_to_many :plates
+  #has_and_belongs_to_many :plates
+  has_many :charges
+  has_many :plates, through: :charges
 
   validates :user_id,:table_id,:presence=>true, :numericality=>true
   def closeOrder

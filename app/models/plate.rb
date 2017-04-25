@@ -1,6 +1,8 @@
 class Plate < ApplicationRecord
   belongs_to :category
-  has_and_belongs_to_many :orders
+  has_many :charges
+  has_many :orders, through: :charges
+  #has_and_belongs_to_many :orders
   before_destroy :removePhoto
   before_save :savePhoto
 
