@@ -4,7 +4,7 @@ class PlatesController < ApplicationController
   # GET /plates
   # GET /plates.json
   def index
-    @plates = Plate.all
+    @plates = Plate.all.paginate(page: params[:page], per_page: 8)
 
   end
 

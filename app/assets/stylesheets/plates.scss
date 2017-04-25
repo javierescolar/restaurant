@@ -7,7 +7,21 @@ img.images_plates_menu{
   height: 12em;
 }
 
+.digg_pagination {
+    background: #f1f1f1;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    padding: 1em;
+    cursor: default;
+}
+.digg_pagination a {
+    text-decoration: none;
+    color: black;
+}
 
+span.next_page.disabled,span.previous_page.disabled{
+    color: #a7a7a7;
+}
 
 //EMPEZAMOS LOS @MEDIA
 @media (min-width: 768px){
