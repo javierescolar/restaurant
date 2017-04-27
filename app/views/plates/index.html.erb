@@ -2,6 +2,12 @@
 
 <h1 class="head-title-form"> Dishes</h1>
   <div class="container">
+    <% if !notice.nil? %>
+    <p id="notice" class="notice-bad"><%= notice %></p>
+    <% end %>
+    <% if (flash[:notice_bad])  %>
+    <p id="notice_bad" class="notice-bad"><%= flash[:notice_bad] %></p>
+    <% end %>
     <div class="row">
 
 
@@ -33,7 +39,8 @@
 
 
 </div>
-<div class="row">
+
+<div class="row footer">
   <div class="col-md-12 col-xs-12">
     <div class="digg_pagination">
     <div class="page_info">

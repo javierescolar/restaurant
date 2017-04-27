@@ -38,7 +38,10 @@ class Plate < ApplicationRecord
     end
     return status
   end
-
+  
+  def checkDependences
+    return self.orders.count == 0
+  end
 private
   def savePhoto
     route_old_photo = self.photo_was
@@ -63,5 +66,7 @@ private
         FileUtils.rm(ROUTES_PHOTOS+"/"+DIR_PHOTOS+"/"+self.photo)
     end
   end
+
+
 
 end

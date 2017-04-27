@@ -12,17 +12,9 @@ class Order < ApplicationRecord
     self.save
   end
 
-  def addPlate(plate_id)
-    @plate = Plate.find(plate_id)
-    self.amount += @plate.price.to_f
-    OrderPlate.new(order_id:self.id,plate_id: @plate.id,prepared:false).save
-    self.save
-  end
-
-  def removePlate(plate_id)
-    @plate = Plate.find(plate_id)
-    self.amount -= @plate.price.to_f
-    OrderPlate.find_by(order_id:self.id,plate_id: @plate.id).destroy.save
+  def updateAmount()
+    total_amount = self.plates.sum('price')
+    self.amount = total_amount
     self.save
   end
 

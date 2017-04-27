@@ -9,7 +9,9 @@ $btn-dark:#43e676;
   color:#8c0404;
   font-weight:bold;
 }
-
+body{
+  overflow-x: hidden;
+}
 .head-title-form{
   border-bottom: solid black 0.1em;
   font-size: 1em;
@@ -122,6 +124,21 @@ background: rgba(147,255,84,1);
   padding: 1em;
   border-radius: 1em;
   border: solid 0.15em #029802;
+  width: 60%;
+  margin: 2em auto -2em auto;
+  width: 60%;
+  left: 20%;
+  position: absolute;
+  z-index: 99;
+}
+
+#notice_bad{
+  background-color: rgba(255, 0, 0, 0.93);
+  border-radius: 1em;
+  padding: 1em;
+  margin: auto;
+  color:black;
+  border: solid 0.2em black;
   width: 60%;
   margin: 2em auto -2em auto;
   width: 60%;

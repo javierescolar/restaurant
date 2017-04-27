@@ -71,11 +71,20 @@ class PlatesController < ApplicationController
   # DELETE /plates/1
   # DELETE /plates/1.json
   def destroy
-    @plate.destroy
-    respond_to do |format|
-      format.html { redirect_to plates_url, notice: 'Plate was successfully destroyed.' }
-      format.json { head :no_content }
+    if @plate.checkDependences
+      @plate.destroy
+      respond_to do |format|
+        format.html { redirect_to plates_url, notice: 'Plate was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        flash[:notice_bad] = 'You can´t delete it. This element has dependencies.'
+        format.html { redirect_to plates_url }
+        format.json { head :no_content }
+      end
     end
+
   end
 
   private
