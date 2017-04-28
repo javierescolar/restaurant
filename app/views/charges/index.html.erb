@@ -4,6 +4,14 @@
 <% end %>
 <h1 class="head-title-form"><%= link_to "<<", @order,class: "btn-back" %> Plates</h1>
   <div class="container">
+    <div class="col-md-12 col-xs-12">
+      <%= form_tag("/orders/:id/plates", method: "get",:id => @order.id) do %>
+        <%= hidden_field_tag :order, @order.id %>
+        <%= select_tag(:category_selection ,options_for_select(@categories.map{ |c| [c.name, c.id ]}),{include_blank: "Select category filter", onchange: "this.form.submit()", class: 'form-control form-control-sm'}) %>
+      <% end %>
+    </div>
+    <br><br>
+
   <% @plates.each do |plate| %>
     <div class="col-md-3 col-xs-12 float_left_plates">
       <div class="row">
@@ -23,7 +31,5 @@
         </div>
     </div>
   <% end %>
-
-
 
 </div>

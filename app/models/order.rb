@@ -6,6 +6,9 @@ class Order < ApplicationRecord
   has_many :plates, through: :charges
 
   validates :user_id,:table_id,:presence=>true, :numericality=>true
+
+  
+
   def closeOrder
     self.table.changeStatusTable(true)
     self.paid = true

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plate:</strong>
+  <%= @dishes_product.plate %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @dishes_product.product %>
+</p>
+
+<%= link_to 'Edit', edit_dishes_product_path(@dishes_product) %> |
+<%= link_to 'Back', dishes_products_path %>

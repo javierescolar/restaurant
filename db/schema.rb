@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425171942) do
+ActiveRecord::Schema.define(version: 20170428190241) do
+
+  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "question_id"
+    t.string   "text_answer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -21,10 +29,20 @@ ActiveRecord::Schema.define(version: 20170425171942) do
   create_table "charges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "order_id"
     t.integer  "plate_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "prepared",   default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["order_id"], name: "index_charges_on_order_id", using: :btree
     t.index ["plate_id"], name: "index_charges_on_plate_id", using: :btree
+  end
+
+  create_table "dishes_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "plate_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plate_id"], name: "index_dishes_products_on_plate_id", using: :btree
+    t.index ["product_id"], name: "index_dishes_products_on_product_id", using: :btree
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -68,10 +86,24 @@ ActiveRecord::Schema.define(version: 20170425171942) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.string   "text_question"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["product_id"], name: "index_questions_on_product_id", using: :btree
   end
 
   create_table "tables", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -105,10 +137,14 @@ ActiveRecord::Schema.define(version: 20170425171942) do
     t.index ["profile_id"], name: "index_users_on_profile_id", using: :btree
   end
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "charges", "orders"
   add_foreign_key "charges", "plates"
+  add_foreign_key "dishes_products", "plates"
+  add_foreign_key "dishes_products", "products"
   add_foreign_key "orders", "tables"
   add_foreign_key "orders", "users"
   add_foreign_key "plates", "categories"
+  add_foreign_key "questions", "products"
   add_foreign_key "users", "profiles"
 end

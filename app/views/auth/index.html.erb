@@ -2,15 +2,16 @@
 <h1 class="head-title-form"> News</h1>
 <div class="container">
   <% @posts.each do |post| %>
-  <div class="col-md-6 indexPost">
+  <div class="col-md-12 indexPost">
     <p>
       <% if newPost(post.created_at)%>
         <span class="newPost">New</span>
       <% end %>
+    <b><%= post.title %></b> -
     <%= formatDateTime(post.created_at) %>
     </p>
-    <p><b><%= post.title %></b></p>
     <p><%= post.description %></p>
+    <hr>
   </div>
   <% end %>
 </div>

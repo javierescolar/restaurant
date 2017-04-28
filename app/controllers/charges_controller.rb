@@ -2,12 +2,28 @@ class ChargesController < ApplicationController
 
   before_action :ordersPermissions
   def index
-    @plates = Plate.all
+    @categories = Category.all
+    if params[:category_selection].present?
+        @plates = Plate.where(category_id: params[:category_selection]).order('name asc')
+    else
+        @plates = Plate.all.order('name asc')
+    end
+
     @order = Order.find(params[:order])
+
     render "index"
   end
 
+  def filterDishes
+    #@categories = Category.all
+
+    #@order = Order.find(params[:order])
+
+    render :index
+  end
+
   def addCharge
+    @categories = Category.all
     @order = Order.find(params[:order])
     @order.charges.create(order_id: @order.id, plate_id:params[:plate])
     @order.updateAmount
@@ -17,6 +33,7 @@ class ChargesController < ApplicationController
   end
 
   def removeCharge
+
     @order = Order.find(params[:order])
     @order.charges.find(params[:charge]).delete
     @order.updateAmount

@@ -5,8 +5,16 @@ class PlatesController < ApplicationController
   # GET /plates.json
   def index
     @plates = Plate.all.paginate(page: params[:page], per_page: 8)
-
+    @categories = Category.all
   end
+
+  def filterDishes
+    @plates = Plate.where(category_id: params[:category_selection]).paginate(page: params[:page], per_page: 2)
+    @categories = Category.all
+    render :index
+  end
+
+
 
   # GET /plates/1
   # GET /plates/1.json

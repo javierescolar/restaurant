@@ -2,7 +2,7 @@ class Plate < ApplicationRecord
   belongs_to :category
   has_many :charges
   has_many :orders, through: :charges
-  #has_and_belongs_to_many :orders
+  has_and_belongs_to_many :products
   before_destroy :removePhoto
   before_save :savePhoto
 
@@ -38,10 +38,11 @@ class Plate < ApplicationRecord
     end
     return status
   end
-  
+
   def checkDependences
     return self.orders.count == 0
   end
+
 private
   def savePhoto
     route_old_photo = self.photo_was

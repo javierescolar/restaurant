@@ -1,5 +1,5 @@
 class Table < ApplicationRecord
-
+  
 
   validates :number,:capacity, :presence => true,:numericality => true
 

@@ -16,6 +16,9 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :category
       t.boolean :tables
       t.boolean :orders_history
+      t.boolean :products
+      t.boolean :questions_answer
+
       t.timestamps
     end
     add_index :users, :dni, unique: true
