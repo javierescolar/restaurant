@@ -3,10 +3,13 @@ class ChargesController < ApplicationController
   before_action :ordersPermissions
   def index
     @categories = Category.all
+
     if params[:category_selection].present?
-        @plates = Plate.where(category_id: params[:category_selection]).order('name asc')
+        @category_selection = params[:category_selection]
+        @plates = Plate.where(category_id: @category_selection).order('name asc').paginate(page: params[:page], per_page: 8)
+
     else
-        @plates = Plate.all.order('name asc')
+        @plates = Plate.all.order('name asc').paginate(page: params[:page], per_page: 8)
     end
 
     @order = Order.find(params[:order])
@@ -19,11 +22,12 @@ class ChargesController < ApplicationController
   end
 
   def addCharge
+    @category_selection = params[:category_selection]
     @categories = Category.all
     @order = Order.find(params[:order])
     @order.charges.create(order_id: @order.id, plate_id:params[:plate])
     @order.updateAmount
-    @plates = Plate.all
+    @plates = (@category_selection.nil?) ? Plate.all.order('name asc').paginate(page: params[:page], per_page: 8): @plates = Plate.where(category_id: @category_selection).order('name asc').paginate(page: params[:page], per_page: 8)
     flash[:notice] = "Plate save into order"
     render "index"
   end

@@ -66,7 +66,9 @@
       </div>
       <div class="row">
         <div class="col">
-          <%= link_to 'Send to Kitchen' , {controller: "orders", action: "sendKitchen",:id => @order.id},class: "btn btn-default btn-sm" %>
+          <% if !sentToTheKitchen(@order) %>
+            <%= link_to 'Send to Kitchen' , {controller: "orders", action: "sendKitchen",:id => @order.id},class: "btn btn-default btn-sm" %>
+          <% end %>
         </div>
         <div class="col">
 

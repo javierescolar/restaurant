@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   belongs_to :profile
-  #has_many :orders
+  has_many :orders
 
   before_save :encryptPassword
   before_update :encryptPassword

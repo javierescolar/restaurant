@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :phone_2
       t.string :mail
       t.string :password
-      t.boolean :orders
+      t.boolean :orders_view
       t.boolean :menu
       t.boolean :create_plate
       t.boolean :category

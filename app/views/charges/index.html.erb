@@ -4,10 +4,13 @@
 <% end %>
 <h1 class="head-title-form"><%= link_to "<<", @order,class: "btn-back" %> Plates</h1>
   <div class="container">
+    <div class="row">
+
+
     <div class="col-md-12 col-xs-12">
       <%= form_tag("/orders/:id/plates", method: "get",:id => @order.id) do %>
         <%= hidden_field_tag :order, @order.id %>
-        <%= select_tag(:category_selection ,options_for_select(@categories.map{ |c| [c.name, c.id ]}),{include_blank: "Select category filter", onchange: "this.form.submit()", class: 'form-control form-control-sm'}) %>
+        <%= select_tag(:category_selection ,options_for_select(@categories.map{ |c| [c.name, c.id ]},@category_selection),{include_blank: "Select category filter", onchange: "this.form.submit()", class: 'form-control form-control-sm'}) %>
       <% end %>
     </div>
     <br><br>
@@ -23,6 +26,9 @@
         <div class="row">
           <div class="col-12">
             <%= form_tag("/addCharge", method: "post",:order=>@order.id,:plate=>plate.id) do %>
+              <% if @category_selection %>
+              <%= hidden_field_tag :category_selection, @category_selection %>
+              <% end %>
               <%= hidden_field_tag :order, @order.id %>
               <%= hidden_field_tag :plate, plate.id %>
               <%= submit_tag "Add",class: "btn btn-default btn-sm col-12"  %>
@@ -31,5 +37,16 @@
         </div>
     </div>
   <% end %>
+  </div>
+</div>
 
+<div class="row footer">
+  <div class="col-md-12 col-xs-12">
+    <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @plates %>
+    </div>
+    <%= will_paginate @plates, :container => false,:page_links => false %>
+  </div>
+  </div>
 </div>

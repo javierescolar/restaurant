@@ -7,7 +7,6 @@ class Order < ApplicationRecord
 
   validates :user_id,:table_id,:presence=>true, :numericality=>true
 
-  
 
   def closeOrder
     self.table.changeStatusTable(true)
