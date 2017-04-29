@@ -1,0 +1,36 @@
+
+<h1 class="head-title-form">Questionnaire</h1>
+<div class="container">
+
+
+<div class="col-md-10">
+  <div class="col">
+  <%=  @plate.name %>
+  </div>
+  <%= form_tag("/", method: "post",class: "form-horizontal") do %>
+    <% @plate.products.each do |product| %>
+      <p><%=  product.name %></p>
+      <% product.questions.each do |question| %>
+      <div class="row">
+        <div class="col-md-4 col-xs-12">
+          <%= hidden_field_tag :question, question.text_question %>
+          <%= label_tag question.text_question %>
+        </div>
+        <div class="col-md-8 col-xs-12">
+            <%= select_tag(:answer ,options_for_select(question.answers.map{ |c| [c.text_answer, c.id ]}),{ class: 'form-control form-control-sm'}) %>
+        </div>
+      </div>
+
+
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="row">
+    <div class="col">
+      <a href="#">back</a>
+      <a href="#">Add</a>
+    </div>
+  </div>
+
+</div>
+</div>

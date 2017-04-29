@@ -21,6 +21,13 @@ class ChargesController < ApplicationController
     render :index
   end
 
+  def questionnaire
+      #@category_selection = params[:category_selection]
+      #@plate = params[:plate]
+      #@order = params[:order]
+      @plate = Plate.find(1)
+  end
+
   def addCharge
     @category_selection = params[:category_selection]
     @categories = Category.all

@@ -39,4 +39,8 @@ Rails.application.routes.draw do
 
   #Route para marcar plato como preparado
   post '/preparedDish', to: 'charges#preparedDish'
+
+
+
+  get '/prueba' => 'charges#questionnaire'
 end
