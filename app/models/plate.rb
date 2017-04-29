@@ -2,7 +2,10 @@ class Plate < ApplicationRecord
   belongs_to :category
   has_many :charges
   has_many :orders, through: :charges
-  has_and_belongs_to_many :products
+
+  has_many :dishes_products
+  has_many :products, through: :dishes_products
+
   before_destroy :removePhoto
   before_save :savePhoto
 

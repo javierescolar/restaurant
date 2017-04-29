@@ -1,3 +1,4 @@
 class Product < ApplicationRecord
-  has_and_belongs_to_many :plates
+  has_many :dishes_products
+  has_many :plates, through: :dishes_products
 end

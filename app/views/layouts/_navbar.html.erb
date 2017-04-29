@@ -5,7 +5,7 @@
   <a class="navbar-brand" href="#"></a>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <% if(session[:auth]['orders']) %>
+      <% if(session[:auth]['orders_view']) %>
       <li class="nav-item active">
         <%= link_to "Orders", orders_path, :class => "nav-link" %>
       </li>
@@ -20,7 +20,12 @@
         <%= link_to 'Create Dish', new_plate_path, class: "nav-link" %>
       </li>
       <% end %>
-      <% if(session[:auth]['category'] || session[:auth]['tables']) %>
+      <% if(session[:auth]['products']) %>
+      <li class="nav-item">
+        <%= link_to 'Products', products_path, class: "nav-link" %>
+      </li>
+      <% end %>
+      <% if(session[:auth]['category'] || session[:auth]['tables'] || session[:auth]['questions_answers']) %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
         Configuration
@@ -31,6 +36,10 @@
           <% end %>
           <% if(session[:auth]['tables']) %>
           <%= link_to "Tables", tables_path, :class => "dropdown-item" %>
+          <% end %>
+          <% if(session[:auth]['questions_answers']) %>
+          <%= link_to "Questions", questions_path, :class => "dropdown-item" %>
+          <%= link_to "Answers", answers_path, :class => "dropdown-item" %>
           <% end %>
         </div>
       </li>

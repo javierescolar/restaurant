@@ -17,7 +17,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.boolean :tables
       t.boolean :orders_history
       t.boolean :products
-      t.boolean :questions_answer
+      t.boolean :questions_answers
 
       t.timestamps
     end
