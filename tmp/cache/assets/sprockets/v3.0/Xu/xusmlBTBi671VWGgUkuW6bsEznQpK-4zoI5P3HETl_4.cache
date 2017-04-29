@@ -1,0 +1,22 @@
+I"N(function() {
+  var ready;
+
+  ready = function() {
+    return $('body').on('click', '#generatePass', function() {
+      var caracteres, contrasena, i, j;
+      caracteres = 'abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789';
+      contrasena = '';
+      for (i = j = 0; j <= 7; i = ++j) {
+        contrasena += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+      }
+      $('#user_password').removeAttr('readonly');
+      return $('#user_password').val(contrasena);
+    });
+  };
+
+  $(document).ready(ready);
+
+  $(document).on('page:change', ready);
+
+}).call(this);
+:ET

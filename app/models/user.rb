@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   belongs_to :profile
+  #has_many :orders
+
   before_save :encryptPassword
   before_update :encryptPassword
 
@@ -8,6 +10,10 @@ class User < ApplicationRecord
   validates :name,:surnames, :length => {:minimum =>3}
   validates :phone_1,:phone_2, :length => {:is =>9}, :numericality => {:only_integer =>true}, :allow_nil => true
   validates :dni, :format => {:with => /[0-9]{8}[A-Z]{1}/}
+
+  def checkDependences
+    return self.orders.count == 0
+  end
 
   def encryptPassword
     if (self.password_changed?)

@@ -1,7 +1,10 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$ ->
+
+
+#solucion problemas de los turbolinks
+$(document).on 'turbolinks:load', ->
   $('body').on 'click', '#generatePass', ->
     caracteres = 'abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789'
     contrasena = ''

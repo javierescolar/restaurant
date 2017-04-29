@@ -4,6 +4,9 @@
   <% if !notice.nil? %>
   <p id="notice" class="notice-good"><%= notice %></p>
   <% end %>
+  <% if (flash[:notice_bad])  %>
+  <p id="notice_bad" class="notice-bad"><%= flash[:notice_bad] %></p>
+  <% end %>
   <div class="table-responsive">
   <table class="table table-sm">
     <thead>

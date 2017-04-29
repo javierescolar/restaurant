@@ -45,5 +45,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def createDishesPermissions
+      unless (session[:auth].present? && session[:auth]['create_plate'] == true)
+        flash[:danger] = "¡You haven´t permissions for that section!"
+        redirect_to root_path
+      end
+    end
+
 
 end

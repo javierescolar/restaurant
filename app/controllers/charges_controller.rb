@@ -15,10 +15,6 @@ class ChargesController < ApplicationController
   end
 
   def filterDishes
-    #@categories = Category.all
-
-    #@order = Order.find(params[:order])
-
     render :index
   end
 

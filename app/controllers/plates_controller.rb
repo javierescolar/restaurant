@@ -1,6 +1,6 @@
 class PlatesController < ApplicationController
   before_action :set_plate, only: [:show, :edit, :update, :destroy]
-
+  before_action :createDishesPermissions, only:[:edit, :update,:destroy]
   # GET /plates
   # GET /plates.json
   def index
@@ -9,7 +9,7 @@ class PlatesController < ApplicationController
   end
 
   def filterDishes
-    @plates = Plate.where(category_id: params[:category_selection]).paginate(page: params[:page], per_page: 2)
+    @plates = Plate.where(category_id: params[:category_selection]).paginate(page: params[:page], per_page: 8)
     @categories = Category.all
     render :index
   end

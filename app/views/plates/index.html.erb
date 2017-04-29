@@ -32,12 +32,14 @@
         <div class="col">
           <%= link_to 'Show', plate ,class: "btn btn-default btn-sm col-12" %>
         </div>
+        <% if showEditingPermissions %>
         <div class="col">
             <%= link_to 'Edit', edit_plate_path(plate),class: "btn btn-default btn-sm col-12" %>
         </div>
         <div class="col">
             <%= link_to 'Destroy', plate, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm col-12" %>
         </div>
+        <% end %>
       </div>
     </div>
   <% end %>

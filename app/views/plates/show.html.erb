@@ -38,5 +38,7 @@
 
 
 <%= link_to '<<', plates_path,class: "btn btn-default btn-sm" %>
-<%= link_to 'Edit', edit_plate_path(@plate),class: "btn btn-default btn-sm" %>
+<% if showEditingPermissions %>
+  <%= link_to 'Edit', edit_plate_path(@plate),class: "btn btn-default btn-sm" %>
+<% end %>
 </div>
