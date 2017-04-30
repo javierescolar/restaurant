@@ -1,3 +1,5 @@
+<div class="col-md-6 forms-centers">
+
 <%= form_for(answer) do |f| %>
   <% if answer.errors.any? %>
     <div id="error_explanation">
@@ -13,15 +15,19 @@
 
   <div class="field">
     <%= f.label :question_id %>
-    <%= f.text_field :question_id %>
+    <%= f.select :question_id, options_for_select(@questions.map{ |c| [c.text_question, c.id ]},answer.question_id),{}, { class: 'form-control form-control-sm'} %>
   </div>
 
   <div class="field">
     <%= f.label :text_answer %>
-    <%= f.text_field :text_answer %>
+    <%= f.text_field :text_answer, class: "form-control form-control-sm" %>
   </div>
-
+<br>
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to '<<', answers_path ,class: "btn btn-default btn-sm" %>
+    <%= f.submit 'Save',class: "btn btn-default btn-sm" %>
   </div>
 <% end %>
+
+
+</div>

@@ -1,3 +1,5 @@
+<div class="col-md-6 forms-centers">
+
 <%= form_for(product) do |f| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
@@ -13,10 +15,13 @@
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name , class: "form-control-sm form-control"%>
   </div>
-
+<br>
   <div class="actions">
-    <%= f.submit %>
+    <%= link_to '<<', products_path, class:"btn btn-default btn-sm" %>
+    <%= f.submit 'Save', class:"btn btn-default btn-sm" %>
   </div>
 <% end %>
+
+</div>

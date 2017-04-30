@@ -2,7 +2,7 @@
 <% if !notice.nil? %>
 <p id="notice" class="notice-good"><%= notice %></p>
 <% end %>
-<h1 class="head-title-form"><%= link_to "<<", @order,class: "btn-back" %> Plates</h1>
+<h1 class="head-title-form"><%= link_to "<< Show Order", @order %> Plates</h1>
   <div class="container">
     <div class="row">
 
@@ -25,7 +25,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <%= form_tag("/addCharge", method: "post",:order=>@order.id,:plate=>plate.id) do %>
+            <%= form_tag("/questionnaireAddCharge", method: "post",:order=>@order.id,:plate=>plate.id) do %>
               <% if @category_selection %>
               <%= hidden_field_tag :category_selection, @category_selection %>
               <% end %>

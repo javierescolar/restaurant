@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :answers
-  resources :questions
-  resources :dishes_products
-  resources :products
-  resources :posts
+
   #definimos el root_path
   root :to => 'auth#index'
 
@@ -33,6 +29,7 @@ Rails.application.routes.draw do
   #ruta parra filtrar platos al añadir plato
   get '/orders/:id/plates', to: 'charges#filterDishes'
   #borra y anadir platos a la comanda
+  post '/questionnaireAddCharge' => 'charges#questionnaire'
   post '/addCharge', to: 'charges#addCharge'
   delete '/removeCharge', to: 'charges#removeCharge'
 
@@ -40,7 +37,12 @@ Rails.application.routes.draw do
   #Route para marcar plato como preparado
   post '/preparedDish', to: 'charges#preparedDish'
 
+#rutas de la version 2
+  resources :answers, except: :show
+  resources :questions, except: :show
+  resources :dishes_products
+  resources :products, except: :show
+  resources :posts
 
 
-  get '/prueba' => 'charges#questionnaire'
 end

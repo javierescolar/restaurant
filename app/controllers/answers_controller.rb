@@ -15,11 +15,13 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
+    @questions = Question.all
     @answer = Answer.new
   end
 
   # GET /answers/1/edit
   def edit
+    @questions = Question.all
   end
 
   # POST /answers

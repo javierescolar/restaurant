@@ -9,6 +9,7 @@ class PlatesController < ApplicationController
   end
 
   def filterDishes
+    @category_selection = params[:category_selection]
     @plates = Plate.where(category_id: params[:category_selection]).paginate(page: params[:page], per_page: 8)
     @categories = Category.all
     render :index

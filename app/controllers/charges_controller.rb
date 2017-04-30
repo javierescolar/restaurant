@@ -6,10 +6,10 @@ class ChargesController < ApplicationController
 
     if params[:category_selection].present?
         @category_selection = params[:category_selection]
-        @plates = Plate.where(category_id: @category_selection).order('name asc').paginate(page: params[:page], per_page: 8)
+        @plates = Plate.where(category_id: @category_selection).paginate(page: params[:page], per_page: 8)
 
     else
-        @plates = Plate.all.order('name asc').paginate(page: params[:page], per_page: 8)
+        @plates = Plate.all.paginate(page: params[:page], per_page: 8)
     end
 
     @order = Order.find(params[:order])
@@ -17,24 +17,24 @@ class ChargesController < ApplicationController
     render "index"
   end
 
-  def filterDishes
-    render :index
-  end
+  #def filterDishes
+  #  render :index
+  #end
 
   def questionnaire
-      #@category_selection = params[:category_selection]
-      #@plate = params[:plate]
-      #@order = params[:order]
-      @plate = Plate.find(1)
+      @category_selection = params[:category_selection]
+      @plate = Plate.find(params[:plate])
+      @order = Order.find(params[:order])
   end
 
   def addCharge
     @category_selection = params[:category_selection]
     @categories = Category.all
     @order = Order.find(params[:order])
-    @order.charges.create(order_id: @order.id, plate_id:params[:plate])
+    @special = (params[:special].present?)? true : false;
+    @order.charges.create(order_id: @order.id, plate_id:params[:plate],special:@special,observations:params[:observations])
     @order.updateAmount
-    @plates = (@category_selection.nil?) ? Plate.all.order('name asc').paginate(page: params[:page], per_page: 8): @plates = Plate.where(category_id: @category_selection).order('name asc').paginate(page: params[:page], per_page: 8)
+    @plates = (@category_selection.nil?) ? Plate.all.paginate(page: params[:page], per_page: 8): @plates = Plate.where(category_id: @category_selection).order('name asc').paginate(page: params[:page], per_page: 8)
     flash[:notice] = "Plate save into order"
     render "index"
   end

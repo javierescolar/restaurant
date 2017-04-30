@@ -3,34 +3,53 @@
 <div class="container">
 
 
-<div class="col-md-10">
-  <div class="col">
-  <%=  @plate.name %>
-  </div>
-  <%= form_tag("/", method: "post",class: "form-horizontal") do %>
-    <% @plate.products.each do |product| %>
-      <p><%=  product.name %></p>
-      <% product.questions.each do |question| %>
-      <div class="row">
-        <div class="col-md-4 col-xs-12">
-          <%= hidden_field_tag :question, question.text_question %>
-          <%= label_tag question.text_question %>
+  <div class="col-md-10 col-xs-12 forms-centers">
+    <h3 class="head-forms text-center"><%=  @plate.name %></h3>
+    <br>
+    <%= form_tag("/addCharge", method: "post",:order=>@order.id,:plate=>@plate.id,:category_selection=>@category_selection,class: "form-horizontal") do %>
+      <% if @category_selection %>
+      <%= hidden_field_tag :category_selection, @category_selection %>
+      <% end %>
+      <%= hidden_field_tag :order, @order.id %>
+      <%= hidden_field_tag :plate, @plate.id %>
+
+      <% @plate.products.each do |product| %>
+        <p><b><%=  product.name %></b></p>
+        <% product.questions.each do |question| %>
+        <div class="row">
+          <div class="col-md-4 col-xs-12">
+            <%= hidden_field_tag :question, question.text_question %>
+            <%= label_tag question.text_question %>
+          </div>
+          <div class="col-md-8 col-xs-12">
+              <%= select_tag(:answer ,options_for_select(question.answers.map{ |c| [c.text_answer, c.id ]}),{ class: 'form-control form-control-sm'}) %>
+          </div>
         </div>
-        <div class="col-md-8 col-xs-12">
-            <%= select_tag(:answer ,options_for_select(question.answers.map{ |c| [c.text_answer, c.id ]}),{ class: 'form-control form-control-sm'}) %>
+        <% end %>
+      <% end %>
+      <hr>
+      <div class="row">
+        <div class="col">
+            <%= label_tag :special %>
+            <%= check_box_tag :special, nil,false,class: "form-control form-control-sm" %>
         </div>
       </div>
-
-
-      <% end %>
+      <div class="row">
+        <div class="col">
+          <div class="field">
+          <%= label_tag :observations %>
+          <%= text_area_tag :observations, nil,class: "form-control form-control-sm" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to '<<', :back ,class: "btn btn-default btn-sm"%>
+          <%= submit_tag 'Add Dish', class: "btn btn-default btn-sm" %>
+        </div>
+      </div>
     <% end %>
-  <% end %>
-  <div class="row">
-    <div class="col">
-      <a href="#">back</a>
-      <a href="#">Add</a>
-    </div>
-  </div>
 
-</div>
+
+  </div>
 </div>

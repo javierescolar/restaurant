@@ -15,11 +15,13 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    @products = Product.all
     @question = Question.new
   end
 
   # GET /questions/1/edit
   def edit
+      @products = Product.all
   end
 
   # POST /questions
@@ -55,11 +57,20 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
-    @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
+    if @question.checkDependences
+      @question.destroy
+      respond_to do |format|
+        format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        flash[:notice_bad] = 'You can´t delete it. This element has dependencies.'
+        format.html { redirect_to questions_url}
+        format.json { head :no_content }
+      end
     end
+
   end
 
   private

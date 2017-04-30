@@ -43,7 +43,7 @@ class Plate < ApplicationRecord
   end
 
   def checkDependences
-    return self.orders.count == 0
+    return self.orders.count == 0 && self.charges.count == 0
   end
 
 private

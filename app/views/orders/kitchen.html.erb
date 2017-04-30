@@ -8,12 +8,13 @@
       <table class="table table-sm">
       <thead>
         <tr>
-          <th>Order</th>
+          <th>Nº</th>
           <th>User</th>
           <th>Table</th>
           <th>Dish Name</th>
           <th>Delivery Time</th>
           <th>Prepared</th>
+          <th>Observations</th>
           <th></th>
         </tr>
       </thead>
@@ -21,8 +22,12 @@
 
   <% dishes.charges.each do |dish| %>
       <tbody>
+        <% if dish.special %>
+        <tr class="row-special-charge">
+        <% else%>
+          <tr>
+        <%  end %>
 
-        <tr>
           <td><%= dish.id %></td>
           <td><%= dish.order.user.name.to_s+" "+dish.order.user.surnames.to_s %></td>
           <td><%= dish.order.table.number %></td>
@@ -35,6 +40,7 @@
             <%end%>
           </td>
           <td><%= dish.prepared %></td>
+          <td><%= dish.observations %></td>
           <td>
             <%= form_tag("/preparedDish", method: "post",:dish=>dish.id) do %>
               <%= hidden_field_tag :dish,dish.id %>
