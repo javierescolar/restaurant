@@ -7,7 +7,11 @@
     <ul class="navbar-nav mr-auto">
       <% if(session[:auth]['orders_view']) %>
       <li class="nav-item active">
-        <%= link_to "Orders", orders_path, :class => "nav-link" %>
+        <%  if session[:auth]['profile_id'] == 2 %>
+          <%= link_to "Kitchen",{:controller => "charges", :action => "kitchen"}, :class => "nav-link" %>
+        <% else %>
+          <%= link_to "Orders", orders_path, :class => "nav-link" %>
+        <% end %>
       </li>
       <% end %>
       <% if(session[:auth]['menu']) %>

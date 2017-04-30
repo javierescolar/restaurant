@@ -5,20 +5,10 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    if session[:auth]['profile_id'] == 2
-      #@dishes = OrderPlate.joins(:order).where('orders.kitchen = true and orders.paid = false').order('orders.id,created_at')
-      @orders = Order.where(kitchen:true,paid:false)
-      render :kitchen
-    end
     @orders = Order.where(paid:false)
     if (Table.where(free:true).count == 0)
         flash[:notice_tables] = "No tables available"
     end
-  end
-
-  def kitchen
-      @orders = Order.where(kitchen:true,paid:false)
-      #@orders = Order.where(kitchen:true,paid:false)
   end
 
   def history

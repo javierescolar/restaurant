@@ -1,0 +1,66 @@
+<h1 class="head-title-form"> Orders Kitchen</h1>
+  <div class="container">
+    <% if !notice.nil? %>
+    <p id="notice" class="notice-good"><%= notice %></p>
+    <% end %>
+
+    <div class="col-md-12 col-xs-12">
+      <%= form_tag("/filterOrdersKitchen", method: "get") do %>
+        <%= select_tag(:status_selection ,options_for_select([["Not Prepared",0],["Prepared",1]],@status_selection),{include_blank: "Select status filter", onchange: "this.form.submit()", class: 'form-control form-control-sm'}) %>
+      <% end %>
+    </div>
+    <br>
+
+    <div class="table-responsive">
+      <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Nº</th>
+          <th>User</th>
+          <th>Table</th>
+          <th>Dish Name</th>
+          <th>Delivery Time</th>
+          <th>Observations</th>
+          <th>Prepared</th>
+          <th></th>
+        </tr>
+      </thead>
+ <% @dishes.each do |dish| %>
+
+
+      <tbody>
+        <% if dish.special %>
+          <tr class="row-special-charge">
+        <% else%>
+          <tr>
+        <% end %>
+
+          <td><%= dish.id %></td>
+          <td><%= dish.order.user.name.to_s+" "+dish.order.user.surnames.to_s %></td>
+          <td><%= dish.order.table.number %></td>
+          <td><%= dish.plate.name %></td>
+          <td>
+            <%if dish.order.delivery_time_kitchen.strftime("%H:%M:%S") > dish.created_at.strftime("%H:%M:%S")%>
+              <%=  dish.order.delivery_time_kitchen.strftime("%H:%M:%S") %>
+            <%else%>
+              <%= dish.created_at.strftime("%H:%M:%S") %>
+            <%end%>
+          </td>
+          <td><%= dish.observations %></td>
+          <td><%= dish.prepared %></td>
+          <td>
+            <%= form_tag("/preparedDish", method: "post",:dish=>dish.id) do %>
+              <% if @status_selection %>
+              <%= hidden_field_tag :status_selection,@status_selection %>
+              <% end %>
+              <%= hidden_field_tag :dish,dish.id %>
+              <%= submit_tag "Yes/No",class: "btn btn-default btn-sm col-12"  %>
+            <% end %>
+          </td>
+
+        </tr>
+    </tbody>
+
+  <% end%>
+</table>
+</div>

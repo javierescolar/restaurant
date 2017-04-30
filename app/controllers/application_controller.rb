@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     end
 
     def ordersPermissions
+      if session[:auth].present? &&  session[:auth]['profile_id'] == 2
+        flash[:danger] = "¡You haven´t permissions for that section! You are a Chef"
+        redirect_to root_path
+      end
       unless (session[:auth].present? && session[:auth]['orders_view'] == true)
         flash[:danger] = "¡You haven´t permissions for that section!"
         redirect_to root_path
@@ -61,6 +65,13 @@ class ApplicationController < ActionController::Base
 
     def quesionsAnswersPermissions
       unless (session[:auth].present? && session[:auth]['questions_answers'] == true)
+        flash[:danger] = "¡You haven´t permissions for that section!"
+        redirect_to root_path
+      end
+    end
+
+    def chargesPermissions
+      unless (session[:auth].present? && session[:auth]['profile_id'] == 2)
         flash[:danger] = "¡You haven´t permissions for that section!"
         redirect_to root_path
       end

@@ -1,0 +1,28 @@
+<div class="col-md-6 forms-centers">
+
+<%= form_tag('/plates/'+@plate_id.to_s+'/products/new') do %>
+  <% if dishes_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dishes_product.errors.count, "error") %> prohibited this dishes_product from being saved:</h2>
+
+      <ul>
+      <% dishes_product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= label_tag :product_id %>
+    <%= select_tag :product_id, options_for_select(@products.map{ |c| [c.name, c.id ]}), { class: 'form-control form-control-sm'} %>
+  </div>
+<br>
+  <div class="actions">
+    <%= link_to '<<', '/plates/'+@plate_id.to_s+'/products', class: "btn btn-default btn-sm"%>
+    <%= submit_tag 'Save', class: "btn btn-default btn-sm" %>
+  </div>
+<% end %>
+
+</div>

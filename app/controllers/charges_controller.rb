@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
-
-  before_action :ordersPermissions
+  before_action :chargesPermissions
+  before_action :ordersPermissions , only: [:questionnaire,:addCharge,:removeCharge]
+  before_action :set_filter_kitchen, only: [:preparedDish,:filterOrdersKitchen,:preparedDish]
   def index
     @categories = Category.all
 
@@ -28,6 +29,7 @@ class ChargesController < ApplicationController
   end
 
   def addCharge
+
     @category_selection = params[:category_selection]
     @categories = Category.all
     @order = Order.find(params[:order])
@@ -53,7 +55,30 @@ class ChargesController < ApplicationController
   def preparedDish
     @dish_order = Charge.find(params[:dish])
     @dish_order.preparedDishYesNo
-    redirect_to orders_path
+    if !@status_selection.nil?
+      @dishes = Charge.joins("INNER JOIN orders o ON charges.order_id = o.id and o.kitchen = 1 and o.paid=0").where(prepared:@status_selection)
+    else
+      @dishes = Charge.joins("INNER JOIN orders o ON charges.order_id = o.id and o.kitchen = 1 and o.paid=0")
+    end
+    render :kitchen
   end
+
+  def kitchen
+    if !@status_selection.nil?
+      @dishes = Charge.joins("INNER JOIN orders o ON charges.order_id = o.id and o.kitchen = 1 and o.paid=0").where(prepared:@status_selection)
+    else
+      @dishes = Charge.joins("INNER JOIN orders o ON charges.order_id = o.id and o.kitchen = 1 and o.paid=0")
+    end
+  end
+
+  def filterOrdersKitchen
+    @dishes = Charge.joins("INNER JOIN orders o ON charges.order_id = o.id and o.kitchen = 1 and o.paid=0").where(prepared:@status_selection)
+    render :kitchen
+  end
+
+  private
+    def set_filter_kitchen
+        @status_selection = params[:status_selection]
+    end
 
 end

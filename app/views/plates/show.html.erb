@@ -40,5 +40,6 @@
 <%= link_to '<<', plates_path,class: "btn btn-default btn-sm" %>
 <% if showEditingPermissions %>
   <%= link_to 'Edit', edit_plate_path(@plate),class: "btn btn-default btn-sm" %>
+  <%= link_to 'Add Products' ,'/plates/'+@plate.id.to_s+'/products' ,class: "btn btn-default btn-sm" %>
 <% end %>
 </div>
