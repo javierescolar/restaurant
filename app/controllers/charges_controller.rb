@@ -1,7 +1,8 @@
 class ChargesController < ApplicationController
-  before_action :chargesPermissions
+  before_action :chargesPermissions, except: [:index,:questionnaire,:addCharge,:removeCharge]
   before_action :ordersPermissions , only: [:questionnaire,:addCharge,:removeCharge]
   before_action :set_filter_kitchen, only: [:preparedDish,:filterOrdersKitchen,:preparedDish]
+
   def index
     @categories = Category.all
 

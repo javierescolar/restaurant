@@ -3,7 +3,7 @@
   <% if !notice.nil? %>
   <p id="notice" class="notice-good"><%= notice %></p>
   <% end %>
-  <div class="ticket">
+  <div class="ticket col-md-12">
 
 
 
@@ -20,7 +20,6 @@
           <%= @order.created_at.strftime("%H:%M:%S") %>
         </div>
     </div>
-
     <div class="row">
         <div class="col underline">
           Description
@@ -31,7 +30,11 @@
     </div>
 
     <% @order.charges.each do |charge| %>
-    <div class="row">
+    <% if (charge.prepared) %>
+    <div class="row row-not-prepared">
+    <% else %>
+    <div class="row row-prepared">
+    <% end %>
       <div class="col">
         <%= form_tag("/removeCharge", method: "delete",:order=>@order.id,:charge=>charge.id) do %>
           <%= hidden_field_tag :order, @order.id %>
@@ -45,7 +48,8 @@
       <div class="col">
         <%= charge.plate.price %> €
       </div>
-      <div class="col">
+      <div class="col status-dish-order">
+        <%= (charge.prepared)? "Ready" : "In process" %>
       </div>
     </div>
     <% end %>
