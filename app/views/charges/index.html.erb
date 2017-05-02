@@ -25,7 +25,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <%= form_tag("/questionnaireAddCharge", method: "post",:order=>@order.id,:plate=>plate.id) do %>
+            <%= form_tag("/orders/"+ @order.id.to_s+"/plates/questionnaire", method: "get",:order=>@order.id,:plate=>plate.id) do %>
               <% if @category_selection %>
               <%= hidden_field_tag :category_selection, @category_selection %>
               <% end %>

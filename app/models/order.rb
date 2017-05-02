@@ -7,6 +7,7 @@ class Order < ApplicationRecord
 
   validates :user_id,:table_id,:presence=>true, :numericality=>true
 
+  before_destroy :removeAllCharges
 
   def closeOrder
     self.table.changeStatusTable(true)
@@ -28,4 +29,7 @@ class Order < ApplicationRecord
     end
   end
 
+  def removeAllCharges
+    self.charges.destroy_all
+  end
 end

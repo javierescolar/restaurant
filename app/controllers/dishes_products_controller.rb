@@ -3,7 +3,6 @@ before_action :set_plate_id
   # GET /dishes_products
   # GET /dishes_products.json
 
-
   def index
     @plate = Plate.find(@plate_id)
     @dishes_products = DishesProduct.where(plate_id:@plate_id)

@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   #ruta parra filtrar platos al añadir plato
   get '/orders/:id/plates', to: 'charges#filterDishes'
   #borra y anadir platos a la comanda
-  post '/questionnaireAddCharge' => 'charges#questionnaire'
+  get '/orders/:id/plates/questionnaire' => 'charges#questionnaire'
   post '/addCharge', to: 'charges#addCharge'
   delete '/removeCharge', to: 'charges#removeCharge'
 

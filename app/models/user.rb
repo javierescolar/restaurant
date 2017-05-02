@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :orders
 
   before_save :encryptPassword
-  before_update :encryptPassword
+
 
   validates :dni,:profile_id,:name,:surnames,:mail,:password,:presence => true
   validates :dni,:mail, :uniqueness => true
@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   def encryptPassword
     if (self.password_changed?)
-      self.password = Digest::MD5.hexdigest(self.password.to_s)
+      self.password = Digest::MD5.hexdigest(self.password)
     end
   end
 

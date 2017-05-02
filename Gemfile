@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 #paginacion
 gem 'will_paginate', '~> 3.1.0'
 #anadimos bootstrap 4
