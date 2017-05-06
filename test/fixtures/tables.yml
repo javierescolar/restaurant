@@ -1,13 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  number: 1
-  capacity: 1
-  free: false
-  dinners: 1
-
-two:
-  number: 1
-  capacity: 1
-  free: false
-  dinners: 1

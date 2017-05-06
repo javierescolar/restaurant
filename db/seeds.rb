@@ -19,5 +19,13 @@ User.create([
     surnames:'Admin Admin',
     phone_1:666666666,
     mail:'admin@admin.es',
-    password: Digest::MD5.hexdigest('admin')
+    password: 'admin',
+    orders_view: true,
+    menu: true,
+    create_plate: true,
+    category: true,
+    tables: true,
+    orders_history: true,
+    products: true,
+    questions_answers: true,
 ])

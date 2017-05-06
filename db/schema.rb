@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20170506084645) do
   create_table "charges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "order_id"
     t.integer  "plate_id"
-    t.boolean  "prepared",                   default: false, null: false
-    t.boolean  "special",                                    null: false
-    t.text     "observations", limit: 65535,                 null: false
+    t.boolean  "prepared",                   default: false
+    t.boolean  "special",                    default: false
+    t.text     "observations", limit: 65535
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.index ["order_id"], name: "index_charges_on_order_id", using: :btree
@@ -65,22 +65,12 @@ ActiveRecord::Schema.define(version: 20170506084645) do
     t.integer  "table_id"
     t.float    "amount",                limit: 24, default: 0.0
     t.boolean  "paid",                             default: false
-    t.boolean  "kitchen",                          default: false, null: false
+    t.boolean  "kitchen",                          default: false
     t.datetime "delivery_time_kitchen"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
     t.index ["table_id"], name: "index_orders_on_table_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
-  end
-
-  create_table "orders_plates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "order_id"
-    t.integer  "plate_id"
-    t.boolean  "prepared",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "my_index_order_on_plate", using: :btree
-    t.index ["plate_id"], name: "my_index_plate_on_order", using: :btree
   end
 
   create_table "plates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -145,8 +135,8 @@ ActiveRecord::Schema.define(version: 20170506084645) do
     t.boolean  "category"
     t.boolean  "tables"
     t.boolean  "orders_history"
-    t.boolean  "products",          null: false
-    t.boolean  "questions_answers", null: false
+    t.boolean  "products"
+    t.boolean  "questions_answers"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["dni"], name: "index_users_on_dni", unique: true, using: :btree
