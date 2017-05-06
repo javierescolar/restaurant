@@ -30,25 +30,31 @@ class ChargesController < ApplicationController
   end
 
   def addCharge
-
+    #anadimos las lineas del encargo
+    questionnaire = params[:answers]
     @category_selection = params[:category_selection]
     @categories = Category.all
     @order = Order.find(params[:order])
     @special = (params[:special].present?)? true : false;
-    @order.charges.create(order_id: @order.id, plate_id:params[:plate],special:@special,observations:params[:observations])
+    chargeInsert = @order.charges.create(order_id: @order.id, plate_id:params[:plate],special:@special,observations:params[:observations])
     @order.updateAmount
+    questionnaire.each do |product,question|
+      question.each do |ques,answer|
+        chargeInsert.charges_lines.create(charge_id:chargeInsert.id,product_id:product,question_id:ques,answer_id:answer['answer'])
+      end
+    end
     @plates = (@category_selection.nil?) ? Plate.all.paginate(page: params[:page], per_page: 8): @plates = Plate.where(category_id: @category_selection).order('name asc').paginate(page: params[:page], per_page: 8)
     flash[:notice] = "Plate save into order"
     render "index"
   end
 
   def removeCharge
-
     @order = Order.find(params[:order])
-    @order.charges.find(params[:charge]).delete
+    charge = @order.charges.find(params[:charge])
+    charge.charges_lines.destroy_all
+    charge.delete
     @order.updateAmount
     @plates = Plate.all
-
     flash[:notice] = "Plate destroy from order"
     redirect_to @order
   end

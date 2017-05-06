@@ -1,4 +1,5 @@
 
+
   run = () ->
       $('#notice').remove()
       $('#notice_bad').remove()

@@ -18,11 +18,10 @@
         <% product.questions.each do |question| %>
         <div class="row">
           <div class="col-md-4 col-xs-12">
-            <%= hidden_field_tag :question, question.id %>
             <%= label_tag question.text_question %>
           </div>
           <div class="col-md-8 col-xs-12">
-              <%= select_tag(:answer ,options_for_select(question.answers.map{ |c| [c.text_answer, c.id ]}),{ class: 'form-control form-control-sm'}) %>
+              <%= select_tag("answers[#{product.id}][#{question.id}][#{:answer}]" ,options_for_select(question.answers.map{ |c| [c.text_answer, c.id ]}),{ class: 'form-control form-control-sm'}) %>
           </div>
         </div>
         <% end %>

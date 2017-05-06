@@ -59,6 +59,19 @@
           </td>
 
         </tr>
+        <% if dish.charges_lines.count > 0 %>
+          <% dish.charges_lines.each do |line| %>
+          <% if dish.special %>
+            <tr class="row-special-charge row-small">
+          <% else%>
+            <tr>
+          <% end %>
+              <td></td>
+              <td>Line: <%= line.product.name %></td>
+              <td colspan="6"><%= line.answer.text_answer %></td>
+            </tr>
+          <% end %>
+        <% end %>
     </tbody>
 
   <% end%>

@@ -1,0 +1,11 @@
+I"Ö(function() {
+  $(document).on('turbolinks:load', function() {
+    $('#notice').remove();
+    $('#notice_bad').remove();
+    return $('#error_explanation').remove();
+  });
+
+  setTimeout(run, 3500);
+
+}).call(this);
+:ET

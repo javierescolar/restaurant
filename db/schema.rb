@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428190241) do
+ActiveRecord::Schema.define(version: 20170506084645) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "question_id"
@@ -29,11 +29,26 @@ ActiveRecord::Schema.define(version: 20170428190241) do
   create_table "charges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "order_id"
     t.integer  "plate_id"
-    t.boolean  "prepared",   default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "prepared",                   default: false, null: false
+    t.boolean  "special",                                    null: false
+    t.text     "observations", limit: 65535,                 null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.index ["order_id"], name: "index_charges_on_order_id", using: :btree
     t.index ["plate_id"], name: "index_charges_on_plate_id", using: :btree
+  end
+
+  create_table "charges_lines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "charge_id"
+    t.integer  "product_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["answer_id"], name: "index_charges_lines_on_answer_id", using: :btree
+    t.index ["charge_id"], name: "index_charges_lines_on_charge_id", using: :btree
+    t.index ["product_id"], name: "index_charges_lines_on_product_id", using: :btree
+    t.index ["question_id"], name: "index_charges_lines_on_question_id", using: :btree
   end
 
   create_table "dishes_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -124,14 +139,16 @@ ActiveRecord::Schema.define(version: 20170428190241) do
     t.integer  "phone_2"
     t.string   "mail"
     t.string   "password"
-    t.boolean  "orders"
+    t.boolean  "orders_view"
     t.boolean  "menu"
     t.boolean  "create_plate"
     t.boolean  "category"
     t.boolean  "tables"
     t.boolean  "orders_history"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "products",          null: false
+    t.boolean  "questions_answers", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.index ["dni"], name: "index_users_on_dni", unique: true, using: :btree
     t.index ["mail"], name: "index_users_on_mail", unique: true, using: :btree
     t.index ["profile_id"], name: "index_users_on_profile_id", using: :btree
@@ -140,6 +157,10 @@ ActiveRecord::Schema.define(version: 20170428190241) do
   add_foreign_key "answers", "questions"
   add_foreign_key "charges", "orders"
   add_foreign_key "charges", "plates"
+  add_foreign_key "charges_lines", "answers"
+  add_foreign_key "charges_lines", "charges"
+  add_foreign_key "charges_lines", "products"
+  add_foreign_key "charges_lines", "questions"
   add_foreign_key "dishes_products", "plates"
   add_foreign_key "dishes_products", "products"
   add_foreign_key "orders", "tables"
