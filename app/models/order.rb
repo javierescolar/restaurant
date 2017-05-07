@@ -12,6 +12,7 @@ class Order < ApplicationRecord
   def closeOrder
     self.table.changeStatusTable(true)
     self.paid = true
+    self.payment_time = Time.now
     self.save
   end
 

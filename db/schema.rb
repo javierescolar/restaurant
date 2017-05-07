@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170506084645) do
     t.integer  "table_id"
     t.float    "amount",                limit: 24, default: 0.0
     t.boolean  "paid",                             default: false
+    t.datetime "payment_time"
     t.boolean  "kitchen",                          default: false
     t.datetime "delivery_time_kitchen"
     t.datetime "created_at",                                       null: false

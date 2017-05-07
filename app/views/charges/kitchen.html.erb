@@ -12,7 +12,7 @@
     <br>
 
     <div class="table-responsive">
-      <table class="table table-sm">
+      <table class="table table-sm" id="table-kitchen">
       <thead>
         <tr>
           <th>Nº</th>
@@ -67,8 +67,9 @@
             <tr>
           <% end %>
               <td></td>
-              <td>Line: <%= line.product.name %></td>
-              <td colspan="6"><%= line.answer.text_answer %></td>
+              <td>Line: </td>
+              <td colspan="3"><%= line.product.name %></td>
+              <td colspan="3"><%= line.answer.text_answer %></td>
             </tr>
           <% end %>
         <% end %>
@@ -77,3 +78,9 @@
   <% end%>
 </table>
 </div>
+
+<script type="text/javascript">
+setTimeout(function () {
+      location.reload();
+}, 60 * 1000);
+</script>

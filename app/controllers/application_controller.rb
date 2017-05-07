@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
     end
 
     def chargesPermissions
-      unless (session[:auth].present? && session[:auth]['profile_id'] == 2)
+      unless (session[:auth].present? && (session[:auth]['profile_id'] == 2 || session[:auth]['profile_id'] == 1))
         flash[:danger] = "¡You haven´t permissions for that section!"
         redirect_to root_path
       end
