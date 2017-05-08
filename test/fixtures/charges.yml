@@ -1,0 +1,16 @@
+
+one:
+  id: 1
+  order_id: 1
+  plate_id: 1
+  prepared: false
+  special: false
+  observations: ""
+
+two:
+  id: 2
+  order_id: 1
+  plate_id: 1
+  prepared: false
+  special: true
+  observations: ""

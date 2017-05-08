@@ -1,1 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  id: 1
+  profile_id: 1
+  name: "Administrador"
+  surnames: "Admin Admin"
+  mail: "admin@admin.es"
+  password: "admin"

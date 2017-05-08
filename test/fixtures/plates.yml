@@ -1,0 +1,8 @@
+
+
+one:
+  id: 1
+  name: "Lentejas"
+  price: 12.50
+  description: "Tiene que tener más de diez caracteres"
+  photo: "C:/local/mkdir/touch"
