@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.where(paid:false)
+    @orders = Order.where(paid:false,cancelled:false)
     if (Table.where(free:true).count == 0)
         flash[:notice_tables] = "No tables available"
     end
@@ -73,11 +73,20 @@ class OrdersController < ApplicationController
   # DELETE /orders/1.json
   def destroy
     @order.table.changeStatusTable(true)
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-      format.json { head :no_content }
+    if @order.checkDependences
+      @order.destroy
+      respond_to do |format|
+        format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      @order.removeAllCharges
+      respond_to do |format|
+        format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
+
   end
 
   def receivable

@@ -7,4 +7,10 @@ class Charge < ApplicationRecord
     self.prepared = (self.prepared) ? false : true
     self.save
   end
+
+  def cancelledCharge
+    self.cancelled = true
+    self.observations = "Cancelled"
+    self.save
+  end
 end

@@ -9,6 +9,10 @@ class Order < ApplicationRecord
 
   before_destroy :removeAllCharges
 
+  def checkDependences
+    return self.charges.count == 0
+  end
+
   def closeOrder
     self.table.changeStatusTable(true)
     self.paid = true
@@ -31,6 +35,18 @@ class Order < ApplicationRecord
   end
 
   def removeAllCharges
-    self.charges.destroy_all
+    if self.kitchen
+      self.charges.update(cancelled:true,observations:"Cancelled")
+      self.cancelled = true
+      self.charges.each  do |cl|
+        cl.charges_lines.destroy_all
+      end
+    else
+        self.charges.each  do |cl|
+          cl.charges_lines.destroy_all
+        end
+        self.charges.destroy_all
+    end
+    self.save
   end
 end

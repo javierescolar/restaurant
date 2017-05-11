@@ -52,7 +52,12 @@ class ChargesController < ApplicationController
     @order = Order.find(params[:order])
     charge = @order.charges.find(params[:charge])
     charge.charges_lines.destroy_all
-    charge.delete
+    if @order.kitchen
+      charge.cancelledCharge
+    else
+      charge.delete
+    end
+    
     @order.updateAmount
     @plates = Plate.all
     flash[:notice] = "Dish was successfully destroyed"

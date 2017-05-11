@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <% @order.charges.order('created_at').each do |charge| %>
+    <% @order.charges.where(cancelled:false).order('created_at').each do |charge| %>
     <% if (charge.prepared) %>
     <div class="row row-not-prepared">
     <% else %>
