@@ -10,7 +10,10 @@ class PlatesController < ApplicationController
 
   def filterDishes
     @category_selection = params[:category_selection]
-    @plates = Plate.where(category_id: params[:category_selection]).paginate(page: params[:page], per_page: 8)
+    @plates = Plate.all.paginate(page: params[:page], per_page: 8)
+    if @category_selection .present?
+        @plates = Plate.where(category_id: @category_selection).paginate(page: params[:page], per_page: 8)
+    end
     @categories = Category.all
     render :index
   end
@@ -38,15 +41,9 @@ class PlatesController < ApplicationController
   def create
     @plate = Plate.new(plate_params)
     respond_to do |format|
-      if  @plate.validateImage(params[:plate][:photo])
-        if @plate.save
-          format.html { redirect_to @plate, notice: 'Plate was successfully created.' }
-          format.json { render :show, status: :created, location: @plate }
-        else
-          @categories = Category.all
-          format.html { render :new }
-          format.json { render json: @plate.errors, status: :unprocessable_entity }
-        end
+      if  @plate.validateImage(params[:plate][:photo]) && @plate.save
+        format.html { redirect_to @plate, notice: 'Plate was successfully created.' }
+        format.json { render :show, status: :created, location: @plate }
       else
         @categories = Category.all
         format.html { render :new }
@@ -60,15 +57,9 @@ class PlatesController < ApplicationController
   def update
     #@plate.removePhoto
     respond_to do |format|
-      if  @plate.validateImage(params[:plate][:photo])
-        if @plate.update(plate_params)
+      if @plate.validateImage(params[:plate][:photo]) && @plate.update(plate_params)
           format.html { redirect_to @plate, notice: 'Plate was successfully updated.' }
           format.json { render :show, status: :ok, location: @plate }
-        else
-          @categories = Category.all
-          format.html { render :edit }
-          format.json { render json: @plate.errors, status: :unprocessable_entity }
-        end
       else
         @categories = Category.all
         format.html { render :edit }
