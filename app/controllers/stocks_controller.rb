@@ -33,6 +33,7 @@ class StocksController < ApplicationController
         format.html { redirect_to stocks_path, notice: 'Stock was successfully created.' }
         format.json { render :show, status: :created, location: @stock }
       else
+        @products = Product.all
         format.html { render :new }
         format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
@@ -47,6 +48,7 @@ class StocksController < ApplicationController
         format.html { redirect_to stocks_path, notice: 'Stock was successfully updated.' }
         format.json { render :show, status: :ok, location: @stock }
       else
+        @products = Product.all
         format.html { render :edit }
         format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
