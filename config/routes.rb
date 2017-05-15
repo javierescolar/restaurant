@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   #definimos el root_path
   root :to => 'auth#index'
 
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   #resources :dishes_products,except: [:show, :index]
   resources :products, except: :show
   resources :posts
+  resources :stocks, except: :show
 
   #rutas para asiganr productos a un plato
   get 'plates/:id/products', to: 'dishes_products#index'
@@ -55,5 +57,6 @@ Rails.application.routes.draw do
   post 'plates/:id/products/edit/:registro', to: 'dishes_products#update'
   delete 'plates/:id/products/:registro', to: 'dishes_products#destroy'
 
+  match "*path" => 'auth#notFound', via: [:get, :post]
 
 end

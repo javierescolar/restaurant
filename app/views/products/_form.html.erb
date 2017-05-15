@@ -13,10 +13,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name , class: "form-control-sm form-control"%>
+<div class="row">
+  <div class="col-md-8 col.xs-12">
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name , class: "form-control-sm form-control" %>
+    </div>
   </div>
+  <div class="col-md-4 col.xs-12">
+    <div class="field">
+      <%= f.label :price %>
+      <%= f.text_field :price , class: "form-control-sm form-control" %>
+    </div>
+  </div>
+</div>
+
 <br>
   <div class="actions">
     <%= link_to '<<', products_path, class:"btn btn-default btn-sm" %>

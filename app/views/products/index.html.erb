@@ -11,6 +11,9 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Price (€/Kgr)</th>
+      <th>Stock</th>
+      <th>Price (€ Stock)</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -19,6 +22,9 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.stocks.sum('quantity') %></td>
+        <td><%= product.stocks.sum('quantity') * product.price %></td>
       <!--  <td><%= link_to 'Show', product,class:"btn btn-default btn-sm" %></td> -->
         <td><%= link_to 'Edit', edit_product_path(product),class:"btn btn-default btn-sm" %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-default btn-sm" %></td>

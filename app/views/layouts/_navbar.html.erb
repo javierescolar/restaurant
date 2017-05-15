@@ -24,11 +24,6 @@
         <%= link_to 'Create Dish', new_plate_path, class: "nav-link" %>
       </li>
       <% end %>
-      <% if(session[:auth]['products']) %>
-      <li class="nav-item">
-        <%= link_to 'Products', products_path, class: "nav-link" %>
-      </li>
-      <% end %>
       <% if(session[:auth]['category'] || session[:auth]['tables'] || session[:auth]['questions_answers']) %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -48,7 +43,7 @@
         </div>
       </li>
       <% end %>
-      <% if(session[:auth]['orders_history']) %>
+      <% if(session[:auth]['orders_history'] || session[:auth]['products']) %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
         Management
@@ -56,6 +51,12 @@
         <div class="dropdown-menu" aria-labelledby="Preview">
           <% if(session[:auth]['orders_history']) %>
             <%= link_to 'Orders History' , {controller: "orders", action: "history"},:class => "dropdown-item" %>
+          <% end %>
+          <% if(session[:auth]['products']) %>
+            <%= link_to 'Products', products_path, :class => "dropdown-item" %>
+          <% end %>
+          <% if(session[:auth]['products']) %>
+            <%= link_to 'Stock', stocks_path, :class => "dropdown-item" %>
           <% end %>
         </div>
       </li>

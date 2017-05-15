@@ -33,4 +33,8 @@ class AuthController < ApplicationController
     session[:auth_id] = nil
     render 'new'
   end
+
+  def notFound
+
+  end
 end

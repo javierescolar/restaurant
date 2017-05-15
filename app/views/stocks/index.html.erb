@@ -1,0 +1,36 @@
+<h1 class="head-title-form"> Stocks</h1>
+<div class="container">
+  <% if !notice.nil? %>
+  <p id="notice" class="notice-good"><%= notice %></p>
+  <% end %>
+  <% if (flash[:notice_bad])  %>
+  <p id="notice_bad" class="notice-bad"><%= flash[:notice_bad] %></p>
+  <% end %>
+  <div class="table-responsive">
+  <table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Expiration date</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stocks.each do |stock| %>
+      <tr>
+        <td><%= stock.product.name %></td>
+        <td><%= stock.quantity %></td>
+        <td><%= stock.expiration_date %></td>
+        <!--<td><%= link_to 'Show', stock %></td>-->
+        <td><%= link_to 'Edit', edit_stock_path(stock),class:"btn btn-default btn-sm" %></td>
+        <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-default btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<%= link_to 'New Stock', new_stock_path, class: "font_size_no_p" %>
