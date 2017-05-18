@@ -4,7 +4,11 @@ class Charge < ApplicationRecord
   has_many :charges_lines
 
   def preparedDishYesNo
-    self.prepared = (self.prepared) ? false : true
+    if (self.prepared)
+      self.prepared = false
+    else
+      self.prepared = true
+    end
     self.save
   end
 

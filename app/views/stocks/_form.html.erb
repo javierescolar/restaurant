@@ -20,16 +20,22 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-6 col-xs-12">
+  <div class="col-md-4 col-xs-12">
     <div class="field">
       <%= f.label :quantity %>
       <%= f.number_field :quantity , class: "form-control-sm form-control"%>
     </div>
   </div>
-  <div class="col-md-6 col-xs-12">
+  <div class="col-md-4 col-xs-12">
     <div class="field">
       <%= f.label :expiration_date %>
       <%= f.date_field :expiration_date, class: "form-control-sm form-control" %>
+    </div>
+  </div>
+  <div class="col-md-4 col.xs-12">
+    <div class="field">
+      <%= f.label :unit_measure %>
+      <%= f.select :unit_measure, options_for_select([['Kilogramo','Kg'],['Litro','L']],stock.unit_measure), {},class: "form-control-sm form-control" %>
     </div>
   </div>
 </div>

@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20170515153201) do
   create_table "dishes_products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "plate_id"
     t.integer  "product_id"
+    t.float    "quantity",        limit: 24
+    t.string   "unit_measure"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["plate_id"], name: "index_dishes_products_on_plate_id", using: :btree
@@ -97,6 +99,7 @@ ActiveRecord::Schema.define(version: 20170515153201) do
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.float    "price",      limit: 24
+    t.string   "unit_measure"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -117,7 +120,8 @@ ActiveRecord::Schema.define(version: 20170515153201) do
 
   create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_id"
-    t.integer  "quantity"
+    t.float    "quantity",        limit: 24
+    t.string   "unit_measure"
     t.date     "expiration_date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

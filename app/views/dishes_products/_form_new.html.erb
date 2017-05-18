@@ -18,6 +18,14 @@
     <%= label_tag :product_id %>
     <%= select_tag :product_id, options_for_select(@products.map{ |c| [c.name, c.id ]}), { class: 'form-control form-control-sm'} %>
   </div>
+  <div class="field">
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity,'',class: "form-control-sm form-control" %>
+  </div>
+  <div class="field">
+    <%= label_tag :unit_measure %>
+    <%= select_tag :unit_measure, options_for_select([['Kilogramo','Kg'],['Litro','L']],dishes_product.unit_measure), {class: "form-control-sm form-control"} %>
+  </div>
 <br>
   <div class="actions">
     <%= link_to '<<', '/plates/'+@plate_id.to_s+'/products', class: "btn btn-default btn-sm"%>
