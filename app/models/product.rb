@@ -5,8 +5,8 @@ class Product < ApplicationRecord
   has_many :stocks
 
   has_many :questions
-  
-  validates :name, :price, :presence => true
+
+  validates :name, :price, :unit_measure,:presence => true
   validates :price, :numericality  => {only_float:true}
 
   def checkDependences

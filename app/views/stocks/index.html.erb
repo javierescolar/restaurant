@@ -12,6 +12,7 @@
     <tr>
       <th>Product</th>
       <th>Quantity</th>
+      <th>Unit</th>
       <th>Expiration date</th>
       <th colspan="2"></th>
     </tr>
@@ -22,6 +23,7 @@
       <tr>
         <td><%= stock.product.name %></td>
         <td><%= stock.quantity %></td>
+        <td><%= stock.unit_measure %></td>
         <td><%= stock.expiration_date %></td>
         <!--<td><%= link_to 'Show', stock %></td>-->
         <td><%= link_to 'Edit', edit_stock_path(stock),class:"btn btn-default btn-sm" %></td>

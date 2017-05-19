@@ -5,6 +5,12 @@ class Charge < ApplicationRecord
 
   def preparedDishYesNo
     self.prepared = (self.prepared) ? false : true
+    
+    self.plate.dishes_products.each  do |product|
+      stock_selection = Stock.where('quantity >= ?',product.quantity).order('expiration_date').first
+      stock_selection.updateQuantityStock(product.quantity, self.prepared)
+    end
+    
     self.save
   end
 

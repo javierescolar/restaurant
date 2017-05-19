@@ -19,11 +19,8 @@ before_action :set_plate_id
   end
 
   def update
-    puts @plate_id.inspect
-    puts params[:product_id].inspect
-    puts params[:registro].inspect
     @dish_product = DishesProduct.find(params[:registro])
-    @dish_product.update(product_id:(params[:product_id]))
+    @dish_product.update(product_id:(params[:product_id]),quantity:(params[:quantity]),unit_measure:(params[:unit_measure]))
 
     @dishes_products = DishesProduct.where(plate_id:@plate_id)
     flash[:notice] = "Product was successfully updated"
@@ -31,7 +28,7 @@ before_action :set_plate_id
   end
 
   def create
-    DishesProduct.new(plate_id:@plate_id, product_id:params[:product_id]).save
+    DishesProduct.new(plate_id:@plate_id, product_id:params[:product_id],quantity:(params[:quantity]),unit_measure:(params[:unit_measure])).save
     @dishes_products = DishesProduct.where(plate_id:@plate_id)
     flash[:notice] = "Product was successfully created"
     redirect_to '/plates/'+@plate_id.to_s+'/products'
@@ -50,6 +47,6 @@ before_action :set_plate_id
   end
 
   def product_params
-    params.require(:dishes_product).permit(:product_id)
+    params.require(:dishes_product).permit(:product_id,:quantity,:unit_measure)
   end
 end
