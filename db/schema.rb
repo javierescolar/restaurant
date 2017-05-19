@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170515153201) do
     t.integer  "order_id"
     t.integer  "plate_id"
     t.boolean  "prepared",                   default: false
-    t.boolean  "cancelled",                  default: false, null: false
+    t.boolean  "cancelled",                  default: false
     t.boolean  "special",                    default: false
     t.text     "observations", limit: 65535
     t.datetime "created_at",                                 null: false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170515153201) do
     t.boolean  "paid",                             default: false
     t.datetime "payment_time"
     t.boolean  "kitchen",                          default: false
-    t.boolean  "cancelled",                        default: false, null: false
+    t.boolean  "cancelled",                        default: false
     t.datetime "delivery_time_kitchen"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 20170515153201) do
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.float    "price",      limit: 24
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
