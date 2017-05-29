@@ -1,0 +1,16 @@
+I"'(function() {
+  var run;
+
+  run = function() {
+    $('#notice').remove();
+    $('#notice_bad').remove();
+    $('#error_explanation').remove();
+    return $('body').on('click', '#btn-cookie', function() {
+      return $('#cookie').remove();
+    });
+  };
+
+  setTimeout(run, 3500);
+
+}).call(this);
+:ET

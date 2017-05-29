@@ -1,4 +1,7 @@
+ARRANCAR BASE DE DATOS MYSQL
+
 mysql-ctl start
 
+ARRANCAR SERVIDOR APACHE
 
 rails s -b $IP -p $PORT
