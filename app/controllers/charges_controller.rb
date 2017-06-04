@@ -44,7 +44,7 @@ class ChargesController < ApplicationController
       end
     end
     @plates = (@category_selection.nil?) ? Plate.all.paginate(page: params[:page], per_page: 8): @plates = Plate.where(category_id: @category_selection).order('name asc').paginate(page: params[:page], per_page: 8)
-    flash[:notice] = "Dish was successfully destroyed"
+    flash[:notice] = "Added Dish"
     render "index"
   end
 

@@ -19021,3 +19021,721 @@ ProfilesControllerTest: test_El_index_debe_contener_2_perfiles
 --------------------------------------------------------------
   [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `profiles`[0m
   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM `products`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `products` (`id`, `name`, `created_at`, `updated_at`) VALUES (1, 'Carne', '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `orders`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `orders` (`id`, `table_id`, `user_id`, `paid`, `created_at`, `updated_at`) VALUES (1, 1, 1, 0, '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `orders` (`id`, `table_id`, `user_id`, `paid`, `created_at`, `updated_at`) VALUES (2, 1, 1, 1, '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `users` (`id`, `profile_id`, `name`, `surnames`, `mail`, `password`, `created_at`, `updated_at`) VALUES (1, 1, 'Administrador', 'Admin Admin', 'admin@admin.es', 'admin', '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `posts`[0m
+  [1m[36mFixture Delete (2.2ms)[0m  [1m[31mDELETE FROM `answers`[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM `tables`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `tables` (`id`, `number`, `capacity`, `created_at`, `updated_at`) VALUES (1, 10, 5, '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `stocks`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `stocks` (`quantity`, `expiration_date`, `created_at`, `updated_at`, `id`, `product_id`) VALUES (1.0, '2017-05-15', '2017-06-04 18:17:13', '2017-06-04 18:17:13', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `stocks` (`quantity`, `expiration_date`, `created_at`, `updated_at`, `id`, `product_id`) VALUES (1.0, '2017-05-15', '2017-06-04 18:17:13', '2017-06-04 18:17:13', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `plates`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `plates` (`id`, `name`, `price`, `description`, `photo`, `created_at`, `updated_at`) VALUES (1, 'Lentejas', 12.5, 'Tiene que tener más de diez caracteres', 'C:/local/mkdir/touch', '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `dishes_products`[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `charges`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `charges` (`id`, `order_id`, `plate_id`, `prepared`, `special`, `observations`, `created_at`, `updated_at`) VALUES (1, 1, 1, 0, 0, '', '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `charges` (`id`, `order_id`, `plate_id`, `prepared`, `special`, `observations`, `created_at`, `updated_at`) VALUES (2, 1, 1, 0, 1, '', '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `questions`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `questions` (`id`, `product_id`, `text_question`, `created_at`, `updated_at`) VALUES (1, 1, '¿Cómo quiere la carne?', '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `profiles`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `profiles` (`id`, `name`, `created_at`, `updated_at`) VALUES (1, 'Administrator', '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `profiles` (`id`, `name`, `created_at`, `updated_at`) VALUES (2, 'Chef', '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES (1, 'Combo', '2017-06-04 18:17:13', '2017-06-04 18:17:13')[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+PlatesControllerTest: test_ruta_edit
+------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+PlatesControllerTest: test_ruta_index
+-------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+PlatesControllerTest: test_ruta_show
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+CategoriesControllerTest: test_ruta_edit
+----------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------
+CategoriesControllerTest: test_ruta_index
+-----------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ProductsControllerTest: test_ruta_edit
+--------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+ProductsControllerTest: test_ruta_index
+---------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_insertar_usuario_valido
+--------------------------------------
+  [1m[36mProfile Load (0.6ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`name` = 'Administrator' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProfile Load (0.6ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`dni` = BINARY '10000000A' LIMIT 1[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`mail` = BINARY 'prueba@prueba.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `users` (`profile_id`, `dni`, `name`, `surnames`, `mail`, `password`, `created_at`, `updated_at`) VALUES (1, '10000000A', 'Javier', 'Escolar Salcedo', 'prueba@prueba.com', 'c893bad68927b457dbed39460e6afd62', '2017-06-04 18:17:14', '2017-06-04 18:17:14')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (7.6ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------
+UserTest: test_usuario_invalido(nombre_inferior_a_tres_letras)
+--------------------------------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`dni` = BINARY '10000000A' LIMIT 1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`mail` = BINARY 'prueba@prueba.com' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_usuario_invalido(nombre_obligatorio)
+---------------------------------------------------
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`dni` = BINARY '10000000A' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`mail` = BINARY 'prueba@prueba.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_usuario_invalido(formato_telefono_invalido)
+----------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`dni` = BINARY '10000000A' LIMIT 1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`mail` = BINARY 'prueba@prueba.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ProfilesControllerTest: test_ruta_edit
+--------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------
+ProfilesControllerTest: test_El_index_debe_contener_2_perfiles
+--------------------------------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `profiles`[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+ProfilesControllerTest: test_ruta_update
+----------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+ProfilesControllerTest: test_ruta_index
+---------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ProfileTest: test_perfil_válido
+-------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `profiles` (`name`, `created_at`, `updated_at`) VALUES ('Administrator', '2017-06-04 18:17:14', '2017-06-04 18:17:14')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (7.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ProfileTest: test_perfil_administrador
+--------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------
+ProfileTest: test_perfil_invalido(nombre_obligatorio)
+-----------------------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------
+AnswerTest: test_Pregunta_válida
+--------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `answers` (`question_id`, `text_answer`, `created_at`, `updated_at`) VALUES (1, 'Al punto', '2017-06-04 18:17:14', '2017-06-04 18:17:14')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (8.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------
+AnswerTest: test_respuesta_inválida(depende_de_una_pregunta)
+------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+QuestionTest: test_Pregunta_válida
+----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `questions` (`product_id`, `text_question`, `created_at`, `updated_at`) VALUES (1, '¿Cómo quiere la carne?', '2017-06-04 18:17:14', '2017-06-04 18:17:14')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (7.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------
+QuestionTest: test_pregunta_inválida(depende_de_un_produto)
+-----------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+QuestionsControllerTest: test_ruta_edit
+---------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+QuestionsControllerTest: test_ruta_index
+----------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------
+CategoryTest: test_mesa_inválida(nombre_obligatorio)
+----------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CategoryTest: test_mesa_válida
+------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`) VALUES ('Combo', '2017-06-04 18:17:14', '2017-06-04 18:17:14')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (7.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+PlateTest: test_plato_inválido(debe_tener_una_foto)
+---------------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------
+PlateTest: test_plato_inválido(descripcion_mayor_de_10_caracteres)
+------------------------------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+PlateTest: test_plato_inválido(descripcion_tener_referencia_a_una_categoria)
+----------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------
+OrderTest: test_comanda_creada_sin_platos
+-----------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTable Load (0.6ms)[0m  [1m[34mSELECT  `tables`.* FROM `tables` WHERE `tables`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `orders` (`user_id`, `table_id`, `created_at`, `updated_at`) VALUES (1, 1, '2017-06-04 18:17:14', '2017-06-04 18:17:14')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (7.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+StocksControllerTest: test_ruta_edit
+------------------------------------
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+StocksControllerTest: test_ruta_index
+-------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+PostsControllerTest: test_ruta_edit
+-----------------------------------
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+PostsControllerTest: test_ruta_index
+------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------
+TableTest: test_mesa_inválida(nombre_obligatorio)
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (1.8ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------
+TableTest: test_mesa_válida
+---------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `tables` (`number`, `capacity`, `created_at`, `updated_at`) VALUES (77, 5, '2017-06-04 18:17:15', '2017-06-04 18:17:15')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (7.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+TablesControllerTest: test_ruta_index
+-------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TablesControllerTest: test_ruta_edit
+------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+AnswersControllerTest: test_ruta_edit
+-------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+AnswersControllerTest: test_ruta_index
+--------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------
+OrdersControllerTest: test_comandas_abiertas_en_el_index
+--------------------------------------------------------
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`paid` = 0 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+OrdersControllerTest: test_ruta_index
+-------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+OrdersControllerTest: test_ruta_show
+------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------
+OrdersControllerTest: test_encargos_en_el_show_de_la_comanda
+------------------------------------------------------------
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `charges` WHERE `charges`.`order_id` = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+OrdersControllerTest: test_ruta_edit
+------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DishesProductsControllerTest: test_ruta_index
+---------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+DishesProductsControllerTest: test_ruta_edit
+--------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+DishesProductsControllerTest: test_ruta_new
+-------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ChargesControllerTest: test_ruta_index
+--------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UsersControllerTest: test_ruta_show
+-----------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UsersControllerTest: test_ruta_edit
+-----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+UsersControllerTest: test_ruta_index
+------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM `products`[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO `products` (`id`, `name`, `created_at`, `updated_at`) VALUES (1, 'Carne', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `orders`[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO `orders` (`id`, `table_id`, `user_id`, `paid`, `created_at`, `updated_at`) VALUES (1, 1, 1, 0, '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `orders` (`id`, `table_id`, `user_id`, `paid`, `created_at`, `updated_at`) VALUES (2, 1, 1, 1, '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM `users`[0m
+  [1m[36mFixture Insert (0.5ms)[0m  [1m[32mINSERT INTO `users` (`id`, `profile_id`, `name`, `surnames`, `mail`, `password`, `created_at`, `updated_at`) VALUES (1, 1, 'Administrador', 'Admin Admin', 'admin@admin.es', 'admin', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM `posts`[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `answers`[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `tables`[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `tables` (`id`, `number`, `capacity`, `created_at`, `updated_at`) VALUES (1, 10, 5, '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `stocks`[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `stocks` (`quantity`, `expiration_date`, `created_at`, `updated_at`, `id`, `product_id`) VALUES (1.0, '2017-05-15', '2017-06-04 18:17:34', '2017-06-04 18:17:34', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `stocks` (`quantity`, `expiration_date`, `created_at`, `updated_at`, `id`, `product_id`) VALUES (1.0, '2017-05-15', '2017-06-04 18:17:34', '2017-06-04 18:17:34', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.5ms)[0m  [1m[31mDELETE FROM `plates`[0m
+  [1m[36mFixture Insert (0.4ms)[0m  [1m[32mINSERT INTO `plates` (`id`, `name`, `price`, `description`, `photo`, `created_at`, `updated_at`) VALUES (1, 'Lentejas', 12.5, 'Tiene que tener más de diez caracteres', 'C:/local/mkdir/touch', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `dishes_products`[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM `charges`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `charges` (`id`, `order_id`, `plate_id`, `prepared`, `special`, `observations`, `created_at`, `updated_at`) VALUES (1, 1, 1, 0, 0, '', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `charges` (`id`, `order_id`, `plate_id`, `prepared`, `special`, `observations`, `created_at`, `updated_at`) VALUES (2, 1, 1, 0, 1, '', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `questions`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `questions` (`id`, `product_id`, `text_question`, `created_at`, `updated_at`) VALUES (1, 1, '¿Cómo quiere la carne?', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM `profiles`[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO `profiles` (`id`, `name`, `created_at`, `updated_at`) VALUES (1, 'Administrator', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `profiles` (`id`, `name`, `created_at`, `updated_at`) VALUES (2, 'Chef', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM `categories`[0m
+  [1m[36mFixture Insert (0.3ms)[0m  [1m[32mINSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES (1, 'Combo', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+UserTest: test_usuario_invalido(formato_telefono_invalido)
+----------------------------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProfile Load (0.6ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`dni` = BINARY '10000000A' LIMIT 1[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`mail` = BINARY 'prueba@prueba.com' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------
+UserTest: test_usuario_invalido(nombre_inferior_a_tres_letras)
+--------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`dni` = BINARY '10000000A' LIMIT 1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`mail` = BINARY 'prueba@prueba.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UserTest: test_usuario_invalido(nombre_obligatorio)
+---------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`dni` = BINARY '10000000A' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`mail` = BINARY 'prueba@prueba.com' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+UserTest: test_insertar_usuario_valido
+--------------------------------------
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`name` = 'Administrator' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT  `profiles`.* FROM `profiles` WHERE `profiles`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`dni` = BINARY '10000000A' LIMIT 1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`mail` = BINARY 'prueba@prueba.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `users` (`profile_id`, `dni`, `name`, `surnames`, `mail`, `password`, `created_at`, `updated_at`) VALUES (1, '10000000A', 'Javier', 'Escolar Salcedo', 'prueba@prueba.com', 'c893bad68927b457dbed39460e6afd62', '2017-06-04 18:17:34', '2017-06-04 18:17:34')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (7.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------
+OrdersControllerTest: test_encargos_en_el_show_de_la_comanda
+------------------------------------------------------------
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`id` = 1 LIMIT 1[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `charges` WHERE `charges`.`order_id` = 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------
+OrdersControllerTest: test_comandas_abiertas_en_el_index
+--------------------------------------------------------
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  `orders`.* FROM `orders` WHERE `orders`.`paid` = 0 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+OrdersControllerTest: test_ruta_index
+-------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+OrdersControllerTest: test_ruta_edit
+------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+OrdersControllerTest: test_ruta_show
+------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ProfilesControllerTest: test_ruta_edit
+--------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+ProfilesControllerTest: test_ruta_update
+----------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------
+ProfilesControllerTest: test_El_index_debe_contener_2_perfiles
+--------------------------------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `profiles`[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+ProfilesControllerTest: test_ruta_index
+---------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ChargesControllerTest: test_ruta_index
+--------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+QuestionsControllerTest: test_ruta_edit
+---------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+QuestionsControllerTest: test_ruta_index
+----------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+PostsControllerTest: test_ruta_edit
+-----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+PostsControllerTest: test_ruta_index
+------------------------------------
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------
+CategoryTest: test_mesa_válida
+------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `categories` (`name`, `created_at`, `updated_at`) VALUES ('Combo', '2017-06-04 18:17:35', '2017-06-04 18:17:35')[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (5.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------
+CategoryTest: test_mesa_inválida(nombre_obligatorio)
+----------------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------
+ProfileTest: test_perfil_invalido(nombre_obligatorio)
+-----------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------
+ProfileTest: test_perfil_válido
+-------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `profiles` (`name`, `created_at`, `updated_at`) VALUES ('Administrator', '2017-06-04 18:17:35', '2017-06-04 18:17:35')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (6.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ProfileTest: test_perfil_administrador
+--------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UsersControllerTest: test_ruta_show
+-----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+UsersControllerTest: test_ruta_edit
+-----------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+UsersControllerTest: test_ruta_index
+------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------
+CategoriesControllerTest: test_ruta_edit
+----------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------
+CategoriesControllerTest: test_ruta_index
+-----------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+StocksControllerTest: test_ruta_index
+-------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+StocksControllerTest: test_ruta_edit
+------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+AnswersControllerTest: test_ruta_edit
+-------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+AnswersControllerTest: test_ruta_index
+--------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+----------------------------------
+QuestionTest: test_Pregunta_válida
+----------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  `products`.* FROM `products` WHERE `products`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `questions` (`product_id`, `text_question`, `created_at`, `updated_at`) VALUES (1, '¿Cómo quiere la carne?', '2017-06-04 18:17:35', '2017-06-04 18:17:35')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (5.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------
+QuestionTest: test_pregunta_inválida(depende_de_un_produto)
+-----------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------
+PlateTest: test_plato_inválido(descripcion_mayor_de_10_caracteres)
+------------------------------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+PlateTest: test_plato_inválido(debe_tener_una_foto)
+---------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+PlateTest: test_plato_inválido(descripcion_tener_referencia_a_una_categoria)
+----------------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------
+TableTest: test_mesa_válida
+---------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `tables` (`number`, `capacity`, `created_at`, `updated_at`) VALUES (77, 5, '2017-06-04 18:17:35', '2017-06-04 18:17:35')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (5.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------
+TableTest: test_mesa_inválida(nombre_obligatorio)
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+--------------------------------
+AnswerTest: test_Pregunta_válida
+--------------------------------
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `answers` (`question_id`, `text_answer`, `created_at`, `updated_at`) VALUES (1, 'Al punto', '2017-06-04 18:17:35', '2017-06-04 18:17:35')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (4.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------
+AnswerTest: test_respuesta_inválida(depende_de_una_pregunta)
+------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------
+DishesProductsControllerTest: test_ruta_new
+-------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+DishesProductsControllerTest: test_ruta_index
+---------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------
+DishesProductsControllerTest: test_ruta_edit
+--------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+PlatesControllerTest: test_ruta_edit
+------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+PlatesControllerTest: test_ruta_index
+-------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+PlatesControllerTest: test_ruta_show
+------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------
+ProductsControllerTest: test_ruta_edit
+--------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------
+ProductsControllerTest: test_ruta_index
+---------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------
+TablesControllerTest: test_ruta_index
+-------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+------------------------------------
+TablesControllerTest: test_ruta_edit
+------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------
+OrderTest: test_comanda_creada_sin_platos
+-----------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTable Load (0.5ms)[0m  [1m[34mSELECT  `tables`.* FROM `tables` WHERE `tables`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `orders` (`user_id`, `table_id`, `created_at`, `updated_at`) VALUES (1, 1, '2017-06-04 18:17:35', '2017-06-04 18:17:35')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (6.5ms)[0m  [1m[31mROLLBACK[0m
