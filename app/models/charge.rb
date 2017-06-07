@@ -10,10 +10,10 @@ class Charge < ApplicationRecord
     self.plate.dishes_products.each  do |product|
       if product_no_repeat != product.id
         product_no_repeat = product.id
-        puts "DEBBUg HOLAAAAAA"
-        puts product.inspect
         stock_selection = Stock.where(product_id: product.id).where('quantity >= ?',product.quantity).order('expiration_date').first
-        stock_selection.updateQuantityStock(product.quantity, self.prepared)
+        if !stock_selection.nil?
+          stock_selection.updateQuantityStock(product.quantity, self.prepared)
+        end
       end
     end
     
