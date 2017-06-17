@@ -6,4 +6,8 @@ module ApplicationHelper
   def formatTime(time)
     return time.strftime("%H:%M:%S")
   end
+  
+  def formatDecimalNumber (quantity)
+    return '%.2f' % quantity
+  end
 end
